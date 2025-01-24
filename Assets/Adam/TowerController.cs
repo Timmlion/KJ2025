@@ -6,13 +6,6 @@ public class TowerController : MonoBehaviour
     public float cordZ = 0; // Input Z (-1 to 1)
 
     public bool Posessed { get; set; } = false;
-    public enum ElementType
-    {
-        Yellow,
-        Red,
-        Blue,
-        Green
-    }
 
     public void SetCord(Vector2 vector2)
     {
