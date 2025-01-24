@@ -5,9 +5,9 @@ public class TowerController : MonoBehaviour
     public float cordX = 0; // Input X (-1 to 1)
     public float cordZ = 0; // Input Z (-1 to 1)
 
+    public bool Posessed { get; set; } = false;
     public enum ElementType
     {
-        None,
         Yellow,
         Red,
         Blue,
