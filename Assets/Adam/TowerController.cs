@@ -1,25 +1,37 @@
 using UnityEngine;
 
-public class TowerAttackController : MonoBehaviour
+public class TowerController : MonoBehaviour
 {
     public float cordX = 0; // Input X (-1 to 1)
     public float cordZ = 0; // Input Z (-1 to 1)
 
-    private ElementType _type = ElementType.Yellow;
-
     public enum ElementType
     {
+        None,
         Yellow,
         Red,
         Blue,
         Green
     }
 
-    public void SetType(ElementType type)
+    public enum AttackType
     {
-        _type = type;
+        Basic
     }
 
+    public enum AttackStage
+    {
+        Press,
+        Release
+    }
+
+    public void Attack(ElementType elementType, AttackStage attackStage, AttackType attackType)
+    {
+        AttackStage currentAttackStage = attackStage;
+        AttackType currentAttackType = attackType;
+        //TODO: Logika ataku
+    }
+    
     // Update is called once per frame
     void Update()
     {
@@ -42,10 +54,10 @@ public class TowerAttackController : MonoBehaviour
         // Determine the direction based on cordX and cordZ
         Vector3 direction = new Vector3(cordX, 0, cordZ).normalized;
 
-        if (direction.sqrMagnitude > 0.01f)
+        if (direction.sqrMagnitude > 0.01f && currentElementType != ElementType.None)
         {
             // Set the arrow's color based on the ElementType
-            switch (_type)
+            switch (currentElementType)
             {
                 case ElementType.Yellow:
                     Gizmos.color = Color.yellow;
