@@ -8,6 +8,7 @@ public class PlayerController : MonoBehaviour
     private TowerController currentTower;
     
     private PlayerInput playerInput;
+    [SerializeField] private PlayerGFXController playerGfx;
     private Vector2 moveInput;
 
     public void InitializePlayer(PlayerInput input)
@@ -18,12 +19,10 @@ public class PlayerController : MonoBehaviour
     public void OnLook(InputValue value)
     {
         moveInput = value.Get<Vector2>();
-        Debug.Log($"Player {playerInput.playerIndex} {moveInput}!");
     }
     
     public void OnBasicAttack(InputValue value)
     {
-        Debug.Log($"Player {playerInput.playerIndex} OnBasicAttack!");
         if (value.isPressed)
         {
             BasicAttack();
@@ -32,7 +31,6 @@ public class PlayerController : MonoBehaviour
     
     public void OnSpecialAttack(InputValue value)
     {
-        Debug.Log($"Player {playerInput.playerIndex} OnSpecialAttack!");
         if (value.isPressed)
         {
             SpecialAttack();
@@ -41,7 +39,6 @@ public class PlayerController : MonoBehaviour
 
     public void OnSwitchToYellow(InputValue value)
     {
-        Debug.Log($"Player {playerInput.playerIndex} OnSwitchToYellow!");
         if (value.isPressed)
         {
             SwitchToColor(ElementType.Yellow);
@@ -50,7 +47,6 @@ public class PlayerController : MonoBehaviour
     
     public void OnSwitchToGreen(InputValue value)
     {
-        Debug.Log($"Player {playerInput.playerIndex} OnSwitchToGreen!");
         if (value.isPressed)
         {
             SwitchToColor(ElementType.Green);
@@ -59,7 +55,6 @@ public class PlayerController : MonoBehaviour
     
     public void OnSwitchToBlue(InputValue value)
     {
-        Debug.Log($"Player {playerInput.playerIndex} OnSwitchToBlue!");
         if (value.isPressed)
         {
             SwitchToColor(ElementType.Blue);
@@ -68,7 +63,6 @@ public class PlayerController : MonoBehaviour
     
     public void OnSwitchToRed(InputValue value)
     {
-        Debug.Log($"Player {playerInput.playerIndex} OnSwitchToRed!");
         if (value.isPressed)
         {
             SwitchToColor(ElementType.Red);
@@ -82,19 +76,19 @@ public class PlayerController : MonoBehaviour
     
     public void OnPreviousTower(InputValue value)
     {
-        Debug.Log($"Player {playerInput.playerIndex} PreviousTower!");
         if (value.isPressed)
         {
-            // SwitchToColor();
+            currentTower = GameManager.Instance.TowersManager.JumpTower(false, currentTower);
+            transform.position = currentTower.transform.position;
         }
     }
     
     public void OnNextTower(InputValue value)
     {
-        Debug.Log($"Player {playerInput.playerIndex} OnNextTower!");
         if (value.isPressed)
         {
-            // SwitchToColor();
+            currentTower = GameManager.Instance.TowersManager.JumpTower(true, currentTower);
+            transform.position = currentTower.transform.position;
         }
     }
     
@@ -111,12 +105,17 @@ public class PlayerController : MonoBehaviour
     private void Update()
     {
         Vector3 movement = new Vector3(moveInput.x, 0, moveInput.y) * Time.deltaTime * 5f;
-        // Debug.Log($"Player {playerInput.playerIndex} {moveInput}!");
         transform.Translate(movement);
     }
 
     public void SetCurrentTower(TowerController tower)
     {
         currentTower = tower;
+    }
+
+    public void SetElementType(ElementType elementType)
+    {
+        ElementType = elementType;
+        playerGfx.SetColor(elementType);
     }
 }
