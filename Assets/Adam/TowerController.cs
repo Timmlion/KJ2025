@@ -14,6 +14,11 @@ public class TowerController : MonoBehaviour
         Green
     }
 
+    public void SetCord(Vector2 vector2)
+    {
+        cordX = vector2.x;
+        cordZ = vector2.y;
+    }
     public enum AttackType
     {
         Basic
