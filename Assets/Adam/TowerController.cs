@@ -12,16 +12,6 @@ public class TowerController : MonoBehaviour
         cordX = vector2.x;
         cordZ = vector2.y;
     }
-    public enum AttackType
-    {
-        Basic
-    }
-
-    public enum AttackStage
-    {
-        Press,
-        Release
-    }
 
     public void Attack(ElementType elementType, AttackStage attackStage, AttackType attackType)
     {
