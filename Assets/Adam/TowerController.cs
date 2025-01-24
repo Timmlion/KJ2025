@@ -5,30 +5,16 @@ public class TowerController : MonoBehaviour
     public float cordX = 0; // Input X (-1 to 1)
     public float cordZ = 0; // Input Z (-1 to 1)
 
-    public enum ElementType
-    {
-        None,
-        Yellow,
-        Red,
-        Blue,
-        Green
-    }
+    public bool Posessed { get; set; } = false;
 
     public void SetCord(Vector2 vector2)
     {
         cordX = vector2.x;
         cordZ = vector2.y;
     }
-    public enum AttackType
-    {
-        Basic
-    }
 
-    public enum AttackStage
-    {
-        Press,
-        Release
-    }
+
+    
 
     public void Attack(ElementType elementType, AttackStage attackStage, AttackType attackType)
     {

@@ -27,7 +27,7 @@ public class EnemyBubble : MonoBehaviour
 
         if (goal == null)
         {
-            goal = GameManager.Instance.LevelsManager.playerBase.transform;
+            goal = GameManager.Instance.LevelsManager.playerBaseList[0].transform;
             
             Debug.LogError("goal assigned!");
             return;
@@ -40,7 +40,6 @@ public class EnemyBubble : MonoBehaviour
     private void Update()
     {
         navMeshAgent.SetDestination(goal.position);
-
     }
 
     public void TakeDamage(int damageAmount)
@@ -64,6 +63,11 @@ public class EnemyBubble : MonoBehaviour
         {
             Debug.Log("Bubble hit the base!");
             Destroy(gameObject);
+        }
+
+        if (other.CompareTag("Bullet"))
+        {
+            //TakeDamage(other.GetComponent<Bullet>().damage);        
         }
     }
 }
