@@ -14,6 +14,11 @@ public class TowerController : MonoBehaviour
         Green
     }
 
+    public void SetCord(Vector2 vector2)
+    {
+        cordX = vector2.x;
+        cordZ = vector2.y;
+    }
     public enum AttackType
     {
         Basic
@@ -54,24 +59,10 @@ public class TowerController : MonoBehaviour
         // Determine the direction based on cordX and cordZ
         Vector3 direction = new Vector3(cordX, 0, cordZ).normalized;
 
-        if (direction.sqrMagnitude > 0.01f && currentElementType != ElementType.None)
+        if (direction.sqrMagnitude > 0.01f )
         {
-            // Set the arrow's color based on the ElementType
-            switch (currentElementType)
-            {
-                case ElementType.Yellow:
-                    Gizmos.color = Color.yellow;
-                    break;
-                case ElementType.Red:
-                    Gizmos.color = Color.red;
-                    break;
-                case ElementType.Blue:
-                    Gizmos.color = Color.blue;
-                    break;
-                case ElementType.Green:
-                    Gizmos.color = Color.green;
-                    break;
-            }
+            Gizmos.color = Color.yellow;
+             
 
             // Draw the arrow starting from the player's position
             Vector3 startPosition = transform.position + Vector3.up * 0.5f; // Slight offset for better visibility
