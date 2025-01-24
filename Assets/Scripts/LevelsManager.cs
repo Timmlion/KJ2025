@@ -1,9 +1,14 @@
 using UnityEngine;
+using System.Collections;
+using System.Collections.Generic;
 
 public class LevelsManager : MonoBehaviour
 {
-    public GameObject playerBase;
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
+    public List<GameObject> playerBaseList = new List<GameObject>();
+    public List<GameObject> playerList = new List<GameObject>();
+    public List<GameObject> towerList = new List<GameObject>();
+    public List<GameObject> spawnerList = new List<GameObject>();
+
     void Start()
     {
         
@@ -14,4 +19,6 @@ public class LevelsManager : MonoBehaviour
     {
         
     }
+
+    
 }
