@@ -2,6 +2,7 @@ using UnityEngine;
 
 public class LevelsManager : MonoBehaviour
 {
+    public GameObject playerBase;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {

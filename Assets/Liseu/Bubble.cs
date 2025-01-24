@@ -1,5 +1,6 @@
 using UnityEngine;
 using UnityEngine.AI;
+using System.Collections;
 
 public class EnemyBubble : MonoBehaviour
 {
@@ -26,7 +27,9 @@ public class EnemyBubble : MonoBehaviour
 
         if (goal == null)
         {
-            Debug.LogError("No goal assigned!");
+            goal = GameManager.Instance.LevelsManager.playerBase.transform;
+            
+            Debug.LogError("goal assigned!");
             return;
         }
 
@@ -36,17 +39,8 @@ public class EnemyBubble : MonoBehaviour
 
     private void Update()
     {
-        if (navMeshAgent.remainingDistance <= navMeshAgent.stoppingDistance && !navMeshAgent.pathPending)
-        {
-            ReachGoal();
-        }
-    }
+        navMeshAgent.SetDestination(goal.position);
 
-    private void ReachGoal()
-    {
-        // Logic for reaching the end goal
-        Debug.Log("Bubble reached the goal!");
-        Destroy(gameObject); // Optionally destroy the bubble
     }
 
     public void TakeDamage(int damageAmount)

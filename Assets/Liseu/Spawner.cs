@@ -6,11 +6,18 @@ public class Spawner : MonoBehaviour
 
     void Start()
     {
-        
+        spawnBubble();
+    }
+
+    void Update()
+    {
+            if (Input.GetButtonUp("Fire1"))
+            spawnBubble();
     }
 
     void spawnBubble() {
         Instantiate(bubblePrefab, this.transform.position, Quaternion.identity);
+        Debug.Log("reee");
     }
 
 }
