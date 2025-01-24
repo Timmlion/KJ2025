@@ -2,7 +2,9 @@ using UnityEngine;
 
 public class WavesManager : MonoBehaviour
 {
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
+    public int waveLevel = 1;
+    public int waveCooldown = 30;
+
     void Start()
     {
         

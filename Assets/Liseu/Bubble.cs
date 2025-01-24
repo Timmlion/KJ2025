@@ -2,13 +2,14 @@ using UnityEngine;
 using UnityEngine.AI;
 using System.Collections;
 
-public class EnemyBubble : MonoBehaviour
+public class Bubble : MonoBehaviour
 {
     [Header("Bubble Stats")]
     public float speed = 2.0f; 
     public int health = 100;   
     public int damage = 10;    
-    public int reward = 50;    
+    public int reward = 50; 
+    public ElementType vulnerability;   
 
     [Header("Pathfinding")]
     public Transform goal;     
@@ -67,6 +68,8 @@ public class EnemyBubble : MonoBehaviour
 
         if (other.CompareTag("Bullet"))
         {
+            //damage = other.GetComponent<Bullet>().damage;
+            //if (other.GetComponent<Bullet>())
             //TakeDamage(other.GetComponent<Bullet>().damage);        
         }
     }
