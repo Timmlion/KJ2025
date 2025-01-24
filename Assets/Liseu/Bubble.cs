@@ -29,8 +29,7 @@ public class Bubble : MonoBehaviour
         if (goal == null)
         {
             goal = GameManager.Instance.LevelsManager.playerBaseList[0].transform;
-            
-            Debug.LogError("goal assigned!");
+
             return;
         }
 

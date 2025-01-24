@@ -17,11 +17,13 @@ public class Spawner : MonoBehaviour
         Debug.Log("reee");
     }
 
-    public void spawnBubble(int amount, ElementType type) {
-        for (int i = 0; i < amount; i++)
+    public void spawnBubble(Wave wave) {
+        for (int i = 0; i < wave.amount; i++)
         {
             GameObject bubble = Instantiate(bubblePrefab, this.transform.position, Quaternion.identity);
-            bubble.GetComponent<Bubble>().vulnerability = type;
+            bubble.GetComponent<Bubble>().vulnerability = wave.type;
+            bubble.GetComponent<Bubble>().health = wave.health;
+            bubble.GetComponent<Bubble>().speed = wave.speed;
         }
     }
 
