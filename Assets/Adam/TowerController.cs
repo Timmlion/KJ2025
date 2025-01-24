@@ -13,9 +13,6 @@ public class TowerController : MonoBehaviour
         cordZ = vector2.y;
     }
 
-
-    
-
     public void Attack(ElementType elementType, AttackStage attackStage, AttackType attackType)
     {
         AttackStage currentAttackStage = attackStage;
