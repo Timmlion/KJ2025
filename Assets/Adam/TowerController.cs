@@ -5,8 +5,6 @@ public class TowerController : MonoBehaviour
     public float cordX = 0; // Input X (-1 to 1)
     public float cordZ = 0; // Input Z (-1 to 1)
 
-    public ElementType currentElementType = ElementType.None;
-
     public enum ElementType
     {
         None,
@@ -26,13 +24,8 @@ public class TowerController : MonoBehaviour
         Press,
         Release
     }
-    
-    public void SetType(ElementType elementType)
-    {
-        currentElementType = elementType;
-    }
 
-    public void Attack(AttackStage attackStage, AttackType attackType)
+    public void Attack(ElementType elementType, AttackStage attackStage, AttackType attackType)
     {
         AttackStage currentAttackStage = attackStage;
         AttackType currentAttackType = attackType;
