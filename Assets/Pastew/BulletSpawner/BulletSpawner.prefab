@@ -54,7 +54,7 @@ MonoBehaviour:
   minBulletSize: 1
   maxBulletSize: 2
   maxLoadingTime: 0.5
-  bulletTargetDistanceFactor: 45
+  bulletTargetDistanceFactor: 0.01
   magicTargetBlue: {fileID: 6130598487686458024}
   magicTargetYellow: {fileID: 7018236003827987231}
   magicTargetGreen: {fileID: 5703288415540383624}

@@ -18,7 +18,7 @@ public class BulletSpawner : MonoBehaviour
     [SerializeField] [Range(2, 3)] private float maxBulletSize = 2;
     [SerializeField] [Range(0.5f, 2)] private float maxLoadingTime = 1;
 
-    [SerializeField] private float bulletTargetDistanceFactor = 1;
+    [SerializeField] private float bulletTargetDistanceFactor = 45f;
 
     [SerializeField] private ParticleSystem magicTargetBlue;
     [SerializeField] private ParticleSystem magicTargetYellow;
@@ -121,9 +121,9 @@ public class BulletSpawner : MonoBehaviour
             return;
         // Calculate the target position
         Vector3 targetPosition = transform.position +
-                                 currentDirection3D *
+                                 currentDirection3D.normalized *
                                  (bulletTargetDistanceFactor * 
-                                  currentBulletLifetime);
+                                  CalculateLaunchBulletPower());
         
         switch (currentBullet.BulletData.ElementType)
         {
