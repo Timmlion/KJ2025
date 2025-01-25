@@ -28,6 +28,7 @@ public class Bubble : MonoBehaviour
     [SerializeField] private BubbleGfxController _bubbleGfxController;
 
     [SerializeField] private Animator animator;
+    private Sequence takeDamageSequence;
 
     private void Awake ()
     {
@@ -101,17 +102,19 @@ public class Bubble : MonoBehaviour
         }
         else
         {
-            Sequence s = DOTween.Sequence();
-            s.AppendCallback(() => navMeshAgent.isStopped = true);
-            s.Append(_bubbleGfxController.PlayTakeDamageAnimation());
-            s.AppendInterval(0.5f);
-            s.AppendCallback(() => navMeshAgent.isStopped = false);
-            s.Play();
+            takeDamageSequence?.Kill();
+            takeDamageSequence = DOTween.Sequence();
+            takeDamageSequence.AppendCallback(() => navMeshAgent.isStopped = true);
+            takeDamageSequence.Append(_bubbleGfxController.PlayTakeDamageAnimation());
+            takeDamageSequence.AppendInterval(0.5f);
+            takeDamageSequence.AppendCallback(() => navMeshAgent.isStopped = false);
+            takeDamageSequence.Play();
         }
     }
 
     private void Die()
     {
+        takeDamageSequence?.Kill();
         navMeshAgent.isStopped = true;
         animator.SetTrigger("Die");
         Destroy(gameObject, 1);
