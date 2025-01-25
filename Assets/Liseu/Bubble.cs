@@ -76,6 +76,7 @@ public class Bubble : MonoBehaviour
     {
         StartCoroutine(SetGoal());
         
+        
         if (isSlowedFor >= 2 ) 
         {   
            currentSpeed = navMeshAgent.speed; 
@@ -89,6 +90,7 @@ public class Bubble : MonoBehaviour
         
         if (isStunnedFor > 0) {}
         if (isBleedingFor > 0) {}
+        isSlowedFor -= Time.deltaTime;
     }
 
 
@@ -104,6 +106,7 @@ public class Bubble : MonoBehaviour
         if(bulletData.IsSpecial)
         {
             PlayHitAnimation();
+            if (bulletData.ElementType == ElementType.Blue) {isSlowedFor = 2f;}
             return;
         }
         if(!bulletData.IsSpecial)

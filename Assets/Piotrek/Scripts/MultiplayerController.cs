@@ -13,6 +13,7 @@ public class MultiplayerController : MonoBehaviour
     public void OnPlayerJoined(PlayerInput playerInput)
     {
         Debug.Log($"Player {playerInput.playerIndex + 1} joined with device {playerInput.devices[0].name}");
+        //GameManager.Instance.LevelsManager.playerList.Add(playerInput.GameObject);
     }
 
     public void OnPlayerLeft(PlayerInput playerInput)
