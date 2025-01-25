@@ -1,6 +1,12 @@
 using UnityEngine;
 using UnityEngine.InputSystem;
 
+enum PlayerState
+{
+    Idle = 0,
+    MovingToTower = 1,
+    Shooting = 2,
+}
 public class PlayerController : MonoBehaviour
 {
     public ElementType CurrentElementType = ElementType.Blue;
@@ -10,6 +16,7 @@ public class PlayerController : MonoBehaviour
     private PlayerInput playerInput;
     [SerializeField] private PlayerGFXController playerGfx;
     private Vector2 moveInput;
+    private PlayerState CurrentPlayerState = PlayerState.Idle;
 
     public void InitializePlayer(PlayerInput input)
     {
@@ -63,6 +70,11 @@ public class PlayerController : MonoBehaviour
     
     public void OnPreviousTower(InputValue value)
     {
+        if (CurrentPlayerState == PlayerState.Shooting)
+        {
+            return;
+        }
+        
         if (value.isPressed)
         {
             //Set default light to old tower
@@ -77,6 +89,11 @@ public class PlayerController : MonoBehaviour
 
     public void OnNextTower(InputValue value)
     {
+        if (CurrentPlayerState == PlayerState.Shooting)
+        {
+            return;
+        }
+        
         if (value.isPressed)
         {
             //Set default light to old tower
@@ -99,10 +116,12 @@ public class PlayerController : MonoBehaviour
         if (value.Get<float>() > 0.6f)
         {
             currentTower.CreateBullet(CurrentElementType, AttackType.Basic);
+            CurrentPlayerState = PlayerState.Shooting;
         }
         else if (value.Get<float>() < 0.3f)
         {
             currentTower.LaunchBullet();
+            CurrentPlayerState = PlayerState.Idle;
         }
     }
     
