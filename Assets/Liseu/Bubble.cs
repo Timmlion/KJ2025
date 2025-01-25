@@ -104,6 +104,7 @@ public class Bubble : MonoBehaviour
         if(bulletData.IsSpecial)
         {
             PlayHitAnimation();
+            if (bulletData.ElementType == ElementType.Blue) {isSlowedFor = 2f;}
             return;
         }
         if(!bulletData.IsSpecial)
