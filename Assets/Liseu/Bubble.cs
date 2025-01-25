@@ -103,4 +103,15 @@ public class Bubble : MonoBehaviour
                 TakeDamage(other.GetComponent<Bullet>().damage);        
         }
     }
+
+    public void SetVulnerability(ElementType elementType)
+    {
+        vulnerability = elementType;
+        SetColor(elementType);
+    }
+
+    private void SetColor(ElementType elementType)
+    {
+        // TODO: set bubble color Pastew
+    }
 }

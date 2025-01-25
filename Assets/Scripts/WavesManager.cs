@@ -23,7 +23,7 @@ public class WavesManager : MonoBehaviour
 
     void Start()
     {
-        cooldownTimer = waveCooldown;
+        cooldownTimer = 0;
     }
 
     // Update is called once per frame
