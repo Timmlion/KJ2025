@@ -71,10 +71,10 @@ public class TowerController : MonoBehaviour
                 break;
         }
     }
-    public void CreateBullet(ElementType elementType, AttackType attackType)
+    
+    public void CreateBullet(ElementType elementType, bool isSpecial)
     {
-        AttackType currentAttackType = attackType; // TODO: attackType
-        bulletSpawner.CreateBullet(elementType);
+        bulletSpawner.CreateBullet(elementType, isSpecial);
     }
 
     public void LaunchBullet()

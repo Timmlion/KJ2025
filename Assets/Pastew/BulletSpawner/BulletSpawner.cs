@@ -3,8 +3,13 @@ using UnityEngine;
 public class BulletSpawner : MonoBehaviour
 {
     [SerializeField] private Bullet bulletPrefab;
+    [SerializeField] private Bullet basicAttackBulletPrefab;
     [SerializeField] private bool debug = false;
 
+    [Header("Basic attack")]
+    [SerializeField] [Range(5000, 10000)] private float basicAttackBulletPower;
+
+    [Header("Special attack")]
     [SerializeField] [Range(100, 1000)] private float minLaunchBulletPower = 100;
     [SerializeField] [Range(2000, 5000)] private float maxLaunchBulletPower = 3000;
     [SerializeField] [Range(0.5f, 1)] private float minBulletSize = 1;
@@ -19,14 +24,15 @@ public class BulletSpawner : MonoBehaviour
         HandleCurrentBullet();
     }
 
-    public void CreateBullet(ElementType elementType)
+    public void CreateBullet(ElementType elementType, bool isSpecial)
     {
         if (currentBullet != null)
         {
             return;
         }
 
-        currentBullet = Instantiate(bulletPrefab, transform);
+        currentBullet = Instantiate(isSpecial ? bulletPrefab : basicAttackBulletPrefab, transform);
+        currentBullet.SetIsSpecial(isSpecial);
         currentBullet.transform.position = transform.position;
         currentBullet.SetElementType(elementType);
     }
@@ -37,12 +43,20 @@ public class BulletSpawner : MonoBehaviour
         {
             return;
         }
-
+        
         SetDirection(direction);
         var bulletRigidbody = currentBullet.GetComponent<Rigidbody>();
         bulletRigidbody.isKinematic = false;
         bulletRigidbody.useGravity = true;
-        bulletRigidbody.AddForce(transform.forward * CalculateLaunchBulletPower());
+        
+        if (currentBullet.BulletData.IsSpecial == true)
+        {
+            bulletRigidbody.AddForce(transform.forward * CalculateLaunchBulletPower());
+        }
+        else // Basic Attack
+        {
+            bulletRigidbody.AddForce(transform.forward * basicAttackBulletPower);
+        }
         ClearCurrentBullet();
     }
 

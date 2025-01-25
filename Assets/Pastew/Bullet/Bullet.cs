@@ -1,8 +1,6 @@
 ﻿using System;
 using System.Linq;
-using Unity.VisualScripting;
 using UnityEngine;
-using Object = UnityEngine.Object;
 
 [Serializable]
 public class ElementTypeBulletPrefabPair
@@ -16,7 +14,7 @@ public class Bullet : MonoBehaviour
     [SerializeField] private ElementTypeBulletPrefabPair[] elementTypeBulletPrefabDictionary;
     [SerializeField] private Transform bulletGfxAnchor;
     [SerializeField] private Explosion explosionPrefab;
-    public BulletData BulletData = new();
+    public readonly BulletData BulletData = new();
 
     public void SetSize(float bulletPower)
     {
@@ -32,9 +30,14 @@ public class Bullet : MonoBehaviour
         Instantiate(prefab, bulletGfxAnchor);
     }
 
+    public void SetIsSpecial(bool isSpecial)
+    {
+        BulletData.IsSpecial = isSpecial;
+    }
+
     private void OnTriggerEnter(Collider other)
     {
-        if(other.CompareTag("Ground"))
+        if(other.CompareTag("Ground") && BulletData.IsSpecial)
         {
             Explode();
         }

@@ -1,4 +1,5 @@
 using System;
+using DG.Tweening;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -6,7 +7,8 @@ enum PlayerState
 {
     Idle = 0,
     MovingToTower = 1,
-    Shooting = 2,
+    ShootingSpecial = 2,
+    ShootingBasic = 3,
 }
 public class PlayerController : MonoBehaviour
 {
@@ -20,9 +22,11 @@ public class PlayerController : MonoBehaviour
     private PlayerInput playerInput;
     [SerializeField] private PlayerGFXController playerGfx;
     [SerializeField] private float moveDuration = 0.1f;
+    [SerializeField] private float basicAttackCooldown = 0.2f;
     private Vector2 moveInput;
     private PlayerState CurrentPlayerState = PlayerState.Idle;
     [SerializeField] private Light orbLight;
+    private float remainingBasicAttackCooldown = 0;
 
     public void InitializePlayer(PlayerInput input)
     {
@@ -139,28 +143,29 @@ public class PlayerController : MonoBehaviour
     
     private void OnBasicAttack(InputValue value)
     {
-        if (currentTower == null)
+        if (value.Get<float>() > 0.6f 
+            && CurrentPlayerState == PlayerState.Idle 
+            && remainingBasicAttackCooldown <= 0)
         {
-            // TODO: Consider how to handle this. Is player flying to next tower?
-        }
-
-
-        if (value.Get<float>() > 0.6f && CurrentPlayerState == PlayerState.Idle)
-        {
-            currentTower.CreateBullet(CurrentElementType, AttackType.Basic);
-            CurrentPlayerState = PlayerState.Shooting;
-        }
-        else if (value.Get<float>() < 0.3f && CurrentPlayerState == PlayerState.Shooting)
-        {
+            currentTower.CreateBullet(CurrentElementType, false);
             currentTower.LaunchBullet();
-            CurrentPlayerState = PlayerState.Idle;
+            remainingBasicAttackCooldown = basicAttackCooldown;
+            CurrentPlayerState = PlayerState.Idle; // No need to change state
         }
-        
     }
     
     private void OnSpecialAttack(InputValue value)
     {
-        OnBasicAttack(value); // TODO: this
+        if (value.Get<float>() > 0.6f && CurrentPlayerState == PlayerState.Idle)
+        {
+            currentTower.CreateBullet(CurrentElementType, true);
+            CurrentPlayerState = PlayerState.ShootingSpecial;
+        }
+        else if (value.Get<float>() < 0.3f && CurrentPlayerState == PlayerState.ShootingSpecial)
+        {
+            currentTower.LaunchBullet();
+            CurrentPlayerState = PlayerState.Idle;
+        }
     }
 
     private void MoveToTower(TowerController tower)
@@ -188,6 +193,11 @@ public class PlayerController : MonoBehaviour
             {
                 CurrentPlayerState = PlayerState.Idle;
             }
+        }
+
+        if (remainingBasicAttackCooldown > 0)
+        {
+            remainingBasicAttackCooldown -= Time.deltaTime;
         }
     }
 

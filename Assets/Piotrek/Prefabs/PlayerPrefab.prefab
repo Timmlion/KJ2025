@@ -50,6 +50,7 @@ MonoBehaviour:
   CurrentElementType: 2
   playerGfx: {fileID: 6433615486321266327}
   moveDuration: 0.2
+  basicAttackCooldown: 0.15
   orbLight: {fileID: 290991016147983180}
 --- !u!114 &968460847864447918
 MonoBehaviour:
