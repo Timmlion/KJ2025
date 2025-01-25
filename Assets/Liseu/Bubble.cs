@@ -80,7 +80,7 @@ public class Bubble : MonoBehaviour
         if (isSlowedFor >= 2 ) 
         {   
            currentSpeed = navMeshAgent.speed; 
-           slowedSpeed = currentSpeed*.7f; 
+           slowedSpeed = speed*.7f; 
            navMeshAgent.speed = slowedSpeed;
         }
         if (isStunnedFor >= 1) 
