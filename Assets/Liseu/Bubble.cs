@@ -5,7 +5,7 @@ using System.Collections;
 public class Bubble : MonoBehaviour
 {
     [Header("Bubble Stats")]
-    public float speed = 2.0f; 
+    public float speed = 1.0f; 
     public int health = 100;   
     public int damage = 10;    
     public int reward = 50; 
@@ -63,11 +63,9 @@ public class Bubble : MonoBehaviour
         return closestObject;
     }
 
-
     private void Update()
     {
         StartCoroutine(SetGoal());
-
     }
 
     public void TakeDamage(int damageAmount)
@@ -104,10 +102,8 @@ public class Bubble : MonoBehaviour
                 if (other.GetComponent<Bullet>().elementType == vulnerability) { damageTaken*=3;}
                 TakeDamage(damageTaken);
             }
-        
         }
     }
-
     public void SetVulnerability(ElementType elementType)
     {
         vulnerability = elementType;

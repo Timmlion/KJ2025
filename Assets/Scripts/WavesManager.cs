@@ -11,13 +11,14 @@ public class WavesManager : MonoBehaviour
 
     public List<Wave> wavesList =  new List<Wave>
         {
-            new Wave(7, ElementType.Yellow, 0.5f, 90),
+            new Wave(4, ElementType.Yellow, 0.5f, 90),
             new Wave(5, ElementType.Red, 1.0f, 60),
-            new Wave(10, ElementType.Blue, 1.5f, 150),
+            new Wave(7, ElementType.Blue, 1.2f, 50),
             new Wave(5, ElementType.Green, 0.9f, 90),
             new Wave(10, ElementType.Red, 0.5f, 70),
-            new Wave(3, ElementType.Green, 0.2f, 270),
-            new Wave(5, ElementType.Blue, 1.0f, 110)
+            new Wave(2, ElementType.Green, 0.2f, 270),
+            new Wave(3, ElementType.Blue, 1.0f, 110),
+            new Wave(5, ElementType.Yellow, 1.2f, 60)
         };
 
 
