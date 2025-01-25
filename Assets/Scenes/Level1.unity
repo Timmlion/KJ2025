@@ -1467,6 +1467,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: GameManager
       objectReference: {fileID: 0}
+    - target: {fileID: 5964695515655473454, guid: e0e7bbea93fc5ed438305d931d638624, type: 3}
+      propertyPath: waveLevel
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5964695515655473454, guid: e0e7bbea93fc5ed438305d931d638624, type: 3}
+      propertyPath: waveCooldown
+      value: 10
+      objectReference: {fileID: 0}
     - target: {fileID: 6345732636335647312, guid: e0e7bbea93fc5ed438305d931d638624, type: 3}
       propertyPath: playerBase
       value: 

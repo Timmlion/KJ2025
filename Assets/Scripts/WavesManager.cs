@@ -6,6 +6,7 @@ public class WavesManager : MonoBehaviour
 {
     public int waveLevel = 0;
     public int waveCooldown = 10;
+    public int currentWave = 0;
     float cooldownTimer;
 
     public List<Wave> wavesList =  new List<Wave>
@@ -14,7 +15,9 @@ public class WavesManager : MonoBehaviour
             new Wave(15, ElementType.Red, 3.0f, 80),
             new Wave(20, ElementType.Blue, 1.5f, 120),
             new Wave(12, ElementType.Green, 2.8f, 90),
-            new Wave(18, ElementType.Red, 3.5f, 70)
+            new Wave(18, ElementType.Red, 3.5f, 70),
+            new Wave(3, ElementType.Green, 0.5f, 270),
+            new Wave(3, ElementType.Blue, 1.5f, 110)
         };
 
 
@@ -34,17 +37,20 @@ public class WavesManager : MonoBehaviour
             // If the cooldown timer reaches 0, spawn the next wave
             if (cooldownTimer <= 0f)
             {
-                SpawnWave(wavesList[waveLevel]);
+                StartCoroutine(SpawnWave(wavesList[currentWave]));
                 waveLevel++; // Move to the next wave
                 cooldownTimer = waveCooldown; // Reset the cooldown timer
             }
         }
     }
 
-    public void SpawnWave(Wave wave) {
+    IEnumerator SpawnWave(Wave wave) {
         foreach (GameObject spawner in GameManager.Instance.LevelsManager.spawnerList)
         {
+            if (currentWave > wavesList.Count) {currentWave = 0;}
             spawner.GetComponent<Spawner>().spawnBubble(wave);
+            currentWave++;
+            yield return new WaitForSeconds(0.5f);       
         }
     }
 }
