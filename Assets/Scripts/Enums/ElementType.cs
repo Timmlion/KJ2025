@@ -5,6 +5,7 @@ public enum ElementType
     Yellow,
     Red,
     Blue,
-    Green
+    Green,
+    None
 }
 

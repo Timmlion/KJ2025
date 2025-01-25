@@ -2,6 +2,8 @@ using UnityEngine;
 
 public class TowerController : MonoBehaviour
 {
+    [SerializeField] private Light spotlight;
+    
     private Vector2 currentDirection2D;
     
     public bool Posessed { get; set; } = false;
@@ -13,6 +15,34 @@ public class TowerController : MonoBehaviour
         currentDirection2D = vector2;
     }
 
+    // Set the spotlight color based on the ElementType
+    public void SetTowerColor(ElementType elementType)
+    {
+        if (spotlight == null)
+        {
+            Debug.LogError("Spotlight is not assigned!");
+            return;
+        }
+
+        switch (elementType)
+        {
+            case ElementType.Yellow:
+                spotlight.color = Color.yellow;
+                break;
+            case ElementType.Red:
+                spotlight.color = Color.red;
+                break;
+            case ElementType.Blue:
+                spotlight.color = Color.blue;
+                break;
+            case ElementType.Green:
+                spotlight.color = Color.green;
+                break;
+            case ElementType.None:
+                spotlight.color = Color.white;
+                break;
+        }
+    }
     public void CreateBullet(ElementType elementType, AttackType attackType)
     {
         AttackType currentAttackType = attackType; // TODO: attackType

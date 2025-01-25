@@ -57,6 +57,7 @@ public class PlayerController : MonoBehaviour
     private void SwitchToColor(ElementType elementType)
     {
         CurrentElementType = elementType;
+        currentTower.SetTowerColor(CurrentElementType);
         playerGfx.SetColor(CurrentElementType);
     }
     
@@ -64,7 +65,12 @@ public class PlayerController : MonoBehaviour
     {
         if (value.isPressed)
         {
+            //Set default light to old tower
+            currentTower.SetTowerColor(ElementType.None);
+                
             currentTower = GameManager.Instance.TowersManager.JumpTower(false, currentTower);
+            //Set new tower color
+            currentTower.SetTowerColor(CurrentElementType);
             MoveToTower(currentTower);
         }
     }
@@ -73,7 +79,12 @@ public class PlayerController : MonoBehaviour
     {
         if (value.isPressed)
         {
+            //Set default light to old tower
+            currentTower.SetTowerColor(ElementType.None);
+            
             currentTower = GameManager.Instance.TowersManager.JumpTower(true, currentTower);
+            //Set new tower color
+            currentTower.SetTowerColor(CurrentElementType);
             MoveToTower(currentTower);
         }
     }
@@ -109,17 +120,21 @@ public class PlayerController : MonoBehaviour
 
     private void MoveToTower(TowerController tower)
     {
+        //TODO: Implement flowing to tower
         transform.position = tower.transform.position;
     }
     
     public void SetCurrentTower(TowerController tower)
     {
         currentTower = tower;
+        print("Setting tower color");
+        currentTower.SetTowerColor(CurrentElementType);
     }
 
     public void SetElementType(ElementType elementType)
     {
         CurrentElementType = elementType;
+        currentTower.SetTowerColor(CurrentElementType);
         playerGfx.SetColor(elementType);
     }
 }
