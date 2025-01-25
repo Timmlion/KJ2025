@@ -4,12 +4,37 @@ using UnityEngine.Serialization;
 public class TowerController : MonoBehaviour
 {
     [SerializeField] private Light pointlight;
+    [SerializeField] private Light spotlight;
+    [SerializeField] private BulletSpawner bulletSpawner;
     
     private Vector2 currentDirection2D;
     
-    public bool Posessed { get; set; } = false;
+    private bool posessed = false;
+    public bool Posessed
+    {
+        get => posessed;
+        set
+        {
+            posessed = value;
 
-    [SerializeField] private BulletSpawner bulletSpawner;
+            // Turn the spotlight on or off based on Posessed value
+            if (spotlight != null)
+            {
+                spotlight.enabled = posessed;
+            }
+        }
+    }
+
+   
+    
+    private void Start()
+    {
+        // Ensure the spotlight is off by default
+        if (spotlight != null)
+        {
+            spotlight.enabled = false;
+        }
+    }
     
     public void SetDirection(Vector2 vector2)
     {
@@ -59,8 +84,14 @@ public class TowerController : MonoBehaviour
 
     private void SetPointerDirection(Vector2 currentDirection2D)
     {
-        Vector3 direction = new Vector3(currentDirection2D.x, 0, currentDirection2D.y).normalized;
-        
+        if (Posessed)
+        {
+            Vector3 direction = new Vector3(currentDirection2D.x, 0, currentDirection2D.y).normalized;
+            // Draw the arrow starting from the player's position
+            Vector3 startPosition = transform.position + Vector3.up * 1; // Slight offset for better visibility
+            Vector3 endPosition = startPosition + direction * 3.0f; // Scale arrow length
+            spotlight.transform.LookAt(endPosition);
+        }
     }
     
     private void OnDrawGizmos()
