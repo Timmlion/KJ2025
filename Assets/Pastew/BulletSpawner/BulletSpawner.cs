@@ -18,10 +18,12 @@ public class BulletSpawner : MonoBehaviour
 
     private Bullet currentBullet;
     private float currentBulletLifetime;
+    public Vector3 currentDirection3D;
 
     void Update()
     {
         HandleCurrentBullet();
+        ShowTarget();
     }
 
     public void CreateBullet(ElementType elementType, bool isSpecial)
@@ -62,8 +64,8 @@ public class BulletSpawner : MonoBehaviour
 
     private void SetDirection(Vector2 direction)
     {
-        var direction3D = new Vector3(direction.x, 0, direction.y);
-        transform.LookAt(transform.position + direction3D);
+        currentDirection3D = new Vector3(direction.x, 0, direction.y);
+        transform.LookAt(transform.position + currentDirection3D);
     }
 
     private void ClearCurrentBullet()
@@ -96,5 +98,16 @@ public class BulletSpawner : MonoBehaviour
     {
         float bulletPower = Mathf.Lerp(minLaunchBulletPower, maxLaunchBulletPower, currentBulletLifetime / maxLoadingTime);
         return Mathf.Clamp(bulletPower, minLaunchBulletPower, maxLaunchBulletPower);
+    }
+
+    private void ShowTarget()
+    {
+        if(currentBullet == null)
+            return;
+        
+        if (!currentBullet.BulletData.IsSpecial)
+            return;
+        
+        // draw target based on transform.position and currentDirection3D and currentBulletLifetime
     }
 }
