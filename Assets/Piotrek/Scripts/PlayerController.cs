@@ -53,6 +53,8 @@ public class PlayerController : MonoBehaviour
 
     public void OnSwitchToYellow(InputValue value)
     {
+        Gamepad gamepad = Gamepad.current;
+        gamepad.SetMotorSpeeds(0,0);
         if (value.isPressed)
         {
             SwitchToColor(ElementType.Yellow);
