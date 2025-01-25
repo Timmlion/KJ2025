@@ -3,13 +3,17 @@ using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.Serialization;
 using Random = UnityEngine.Random;
 
 public class PlayersManager : MonoBehaviour
 {
+
+    public bool AllowSameColorPlayers = true;
+    
     private PlayerInputManager playerInputManager;
 
-    private List<PlayerController> players = new ();
+    [SerializeField] private List<PlayerController> players = new ();
     
     private void OnPlayerJoined(PlayerInput playerInput)
     {
@@ -40,7 +44,8 @@ public class PlayersManager : MonoBehaviour
 
     public bool IsElementTypeFree(ElementType elementType)
     {
-        return players.Any(p => p.CurrentElementType == elementType);
+        if (AllowSameColorPlayers) return true;
+        return !players.Any(p => p.CurrentElementType == elementType);
     }
     
     public ElementType GetRandomUnassignedElementType()
