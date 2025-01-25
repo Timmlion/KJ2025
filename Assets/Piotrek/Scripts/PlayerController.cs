@@ -65,16 +65,16 @@ public class PlayerController : MonoBehaviour
         if (value.isPressed)
         {
             currentTower = GameManager.Instance.TowersManager.JumpTower(false, currentTower);
-            transform.position = currentTower.transform.position;
+            MoveToTower(currentTower);
         }
     }
-    
+
     public void OnNextTower(InputValue value)
     {
         if (value.isPressed)
         {
             currentTower = GameManager.Instance.TowersManager.JumpTower(true, currentTower);
-            transform.position = currentTower.transform.position;
+            MoveToTower(currentTower);
         }
     }
     
@@ -102,10 +102,16 @@ public class PlayerController : MonoBehaviour
 
     private void Update()
     {
-        Vector3 movement = new Vector3(moveInput.x, 0, moveInput.y) * (Time.deltaTime * 5f);
-        transform.Translate(movement);
+        // Debug only
+        //Vector3 movement = new Vector3(moveInput.x, 0, moveInput.y) * (Time.deltaTime * 5f);
+        //transform.Translate(movement);
     }
 
+    private void MoveToTower(TowerController tower)
+    {
+        transform.position = tower.transform.position;
+    }
+    
     public void SetCurrentTower(TowerController tower)
     {
         currentTower = tower;

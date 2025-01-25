@@ -25,8 +25,6 @@ public class BulletSpawner : MonoBehaviour
     {
         if (currentBullet != null)
         {
-            Debug.LogWarning("There is already currentBullet. CreateBullet should not be called in this state. " +
-                             "Probably bug somewhere else?");
             return;
         }
         
@@ -39,8 +37,6 @@ public class BulletSpawner : MonoBehaviour
     {
         if (currentBullet == null)
         {
-            Debug.LogWarning("No bullet to launch. LaunchBullet should not be called in this state. " +
-                             "Probably bug somewhere else?");
             return;
         }
 
