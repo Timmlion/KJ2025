@@ -1,6 +1,8 @@
 ﻿using System;
 using System.Linq;
+using Unity.VisualScripting;
 using UnityEngine;
+using Object = UnityEngine.Object;
 
 [Serializable]
 public class ElementTypeBulletPrefabPair
@@ -13,8 +15,8 @@ public class Bullet : MonoBehaviour
 {
     [SerializeField] private ElementTypeBulletPrefabPair[] elementTypeBulletPrefabDictionary;
     [SerializeField] private Transform bulletGfxAnchor;
-    public ElementType elementType;
-    public int damage = 1000; // TODO: what should we do with dmg?
+    [SerializeField] private Explosion explosionPrefab;
+    public BulletData BulletData = new();
 
     public void SetSize(float bulletPower)
     {
@@ -23,9 +25,25 @@ public class Bullet : MonoBehaviour
 
     public void SetElementType(ElementType elementType)
     {
+        BulletData.ElementType = elementType;
         GameObject prefab = elementTypeBulletPrefabDictionary.
             FirstOrDefault(el => el.ElementType == elementType)
             ?.BulletPrefab;
         Instantiate(prefab, bulletGfxAnchor);
+    }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        if(other.CompareTag("Ground"))
+        {
+            Explode();
+        }
+    }
+
+    private void Explode()
+    {
+        var explosion = Instantiate(explosionPrefab, transform.position, Quaternion.identity).GetComponent<Explosion>();
+        explosion.PlayAnimation(BulletData);
+        Destroy(gameObject);
     }
 }

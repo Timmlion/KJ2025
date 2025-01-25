@@ -112,17 +112,15 @@ public class Bubble : MonoBehaviour
             Destroy(gameObject);
         }
 
-        if (other.CompareTag("Bullet"))
+        if (other.GetComponent<Explosion>() != null)
         {
-            damage = other.GetComponent<Bullet>().damage;
+            Explosion explosion = other.GetComponent<Explosion>();
+            damage = explosion.BulletData.Damage;
             Debug.Log($"Bubble took a hit from bullet! ({damage} dmg)");
             
-            if (other.GetComponent<Bullet>())
-            {
-                int damageTaken = other.GetComponent<Bullet>().damage;
-                if (other.GetComponent<Bullet>().elementType == vulnerability) { damageTaken*=3;}
-                TakeDamage(damageTaken);
-            }
+            int damageTaken = damage;
+            if (explosion.BulletData.ElementType == vulnerability) { damageTaken*=3;}
+            TakeDamage(damageTaken);
         }
     }
     public void SetVulnerability(ElementType elementType)
