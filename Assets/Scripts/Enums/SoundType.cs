@@ -2,7 +2,7 @@ using UnityEngine;
 
 public enum SoundType
 {
-    Death,
+    EnemyDeath,
     Shot,
     EnemyHit,
     PlayerBaseHit
