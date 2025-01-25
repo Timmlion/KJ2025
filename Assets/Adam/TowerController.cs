@@ -7,20 +7,24 @@ public class TowerController : MonoBehaviour
 
     public bool Posessed { get; set; } = false;
 
+    [SerializeField] private BulletSpawner bulletSpawner;
+    
     public void SetCord(Vector2 vector2)
     {
         cordX = vector2.x;
         cordZ = vector2.y;
     }
 
-
-    
-
-    public void Attack(ElementType elementType, AttackStage attackStage, AttackType attackType)
+    public void CreateBullet(ElementType elementType, AttackStage attackStage, AttackType attackType)
     {
         AttackStage currentAttackStage = attackStage;
         AttackType currentAttackType = attackType;
-        //TODO: Logika ataku
+        bulletSpawner.CreateBullet(elementType);
+    }
+
+    public void LaunchBullet(Vector2 direction)
+    {
+        bulletSpawner.LaunchBullet(direction);
     }
     
     // Update is called once per frame

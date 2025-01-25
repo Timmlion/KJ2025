@@ -73,6 +73,3 @@ crashlytics-build.properties
 /[Aa]ssets/[Ss]treamingAssets/aa/*
 
 .idea/
-
-# KrakJam2025 specific files
-/[Aa]ssets/Pastew/Epic Toon FX*
