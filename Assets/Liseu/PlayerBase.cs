@@ -6,24 +6,39 @@ public class PlayerBase : MonoBehaviour
     public int health = 100;
     public float currentHealth = 100;
     public HPBar hpBar;
+    private PlayerBaseAnimator playerBaseAnimator;
 
-    // Update is called once per frame
-    void Update()
+    private void Awake()
     {
-        
+        playerBaseAnimator = GetComponent<PlayerBaseAnimator>();
     }
 
     public void TakeDamage(int damageAmount) {
         health -= damageAmount;
         currentHealth = health;
         hpBar.UpdateHealthBar(currentHealth/startingHealth);
-        if (health <= 0) { DestroyBase();}
+        if (health <= 0)
+        {
+            DestroyBase();
+        }
+        else
+        {
+            playerBaseAnimator.PlayTakeDamageAnimation();
+        }
     }
-
+    
+    [ContextMenu("Debug - DestroyBase")]
     public void DestroyBase()
     {
         Camera.main.GetComponent<CameraShake>().TriggerShake();
         GameManager.Instance.LevelsManager.playerBaseList.Remove(this.gameObject);
-        Destroy(gameObject);
+        playerBaseAnimator.PlayDieAnimation();
+        Destroy(gameObject, playerBaseAnimator.DieAnimationLength * 2);
+    }
+
+    [ContextMenu("Debug - TakeDamage")]
+    public void DebugTakeDamage()
+    {
+        TakeDamage(10);
     }
 }
