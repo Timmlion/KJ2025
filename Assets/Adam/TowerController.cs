@@ -40,6 +40,7 @@ public class TowerController : MonoBehaviour
     {
         currentDirection2D = vector2;
         SetPointerDirection(currentDirection2D);
+        bulletSpawner.SetDirection(currentDirection2D);
 
     }
 
