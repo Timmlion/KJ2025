@@ -18,13 +18,14 @@ public class Spawner : MonoBehaviour
         Debug.Log("reee");
     }
 
-    public void spawnBubble(Wave wave) {
+    public void spawnBubble(Wave wave, int waveLevel) {
+        int waveGrowth = wave.amount + (int)waveLevel/3;
         for (int i = 0; i < wave.amount; i++)
         {
             GameObject bubble = Instantiate(bubblePrefab, this.transform.position, Quaternion.identity);
             bubble.GetComponent<Bubble>().SetVulnerability(wave.type);
-            bubble.GetComponent<Bubble>().health = wave.health + 5 * GameManager.Instance.WavesManager.waveLevel;
-            bubble.GetComponent<Bubble>().speed = wave.speed + .05f * GameManager.Instance.WavesManager.waveLevel;
+            bubble.GetComponent<Bubble>().health = wave.health + 5 * waveLevel;
+            bubble.GetComponent<Bubble>().speed = wave.speed + .05f * waveLevel;
             bubble.transform.localScale = baseScale * CalculateScale(bubble.GetComponent<Bubble>().health = wave.health + 5 * GameManager.Instance.WavesManager.waveLevel);
         }
     }

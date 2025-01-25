@@ -193,7 +193,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   speed: 2
   health: 100
-  damage: 10
+  damage: 5
   reward: 50
   vulnerability: 0
   startingHealth: 100
