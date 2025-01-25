@@ -13,7 +13,9 @@ public class Bubble : MonoBehaviour
 
     [Header("Pathfinding")]
     private NavMeshAgent navMeshAgent;
-
+    
+    [Header("References")]
+    [SerializeField] private BubbleGfxController _bubbleGfxController;
 
     private void Awake ()
     {
@@ -107,11 +109,6 @@ public class Bubble : MonoBehaviour
     public void SetVulnerability(ElementType elementType)
     {
         vulnerability = elementType;
-        SetColor(elementType);
-    }
-
-    private void SetColor(ElementType elementType)
-    {
-        // TODO: set bubble color Pastew
+        _bubbleGfxController.SetColor(elementType);
     }
 }

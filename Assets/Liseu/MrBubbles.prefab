@@ -195,6 +195,7 @@ MonoBehaviour:
   damage: 10
   reward: 50
   vulnerability: 0
+  _bubbleGfxController: {fileID: 6942789948584561322}
 --- !u!195 &2812747156129017734
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -279,3 +280,14 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 3866031573511465629, guid: a97965bac8579ec46846eb899847d38d, type: 3}
   m_PrefabInstance: {fileID: 4363496350396299820}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &6942789948584561322 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 6690095475382333574, guid: a97965bac8579ec46846eb899847d38d, type: 3}
+  m_PrefabInstance: {fileID: 4363496350396299820}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 164417b6b7be95c4a80de0591d8cbc7a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

@@ -41,6 +41,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3866031573511465629}
+  - component: {fileID: 6690095475382333574}
   m_Layer: 0
   m_Name: BubbleGfx
   m_TagString: Untagged
@@ -64,6 +65,28 @@ Transform:
   - {fileID: 2325205743416847399}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &6690095475382333574
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2164708100727312435}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 164417b6b7be95c4a80de0591d8cbc7a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  elementMaterialDict:
+  - type: 0
+    material: {fileID: 2100000, guid: 747af4b57c9b61a49b1ea04aa8fd0ab2, type: 2}
+  - type: 1
+    material: {fileID: 2100000, guid: c3cb6c823d5519c43a75d598923fa9ee, type: 2}
+  - type: 3
+    material: {fileID: 2100000, guid: 831c135a30c36d746a01069524e94758, type: 2}
+  - type: 2
+    material: {fileID: 2100000, guid: b3ad386aba28716448079dcf67d7aede, type: 2}
+  meshRenderer: {fileID: 5447339258053746139}
 --- !u!1001 &5364604016428825195
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -124,5 +147,10 @@ PrefabInstance:
 --- !u!4 &5360277867615598611 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4906828391645816, guid: 38efdaadbfe1d624bbee439cb02e7661, type: 3}
+  m_PrefabInstance: {fileID: 5364604016428825195}
+  m_PrefabAsset: {fileID: 0}
+--- !u!137 &5447339258053746139 stripped
+SkinnedMeshRenderer:
+  m_CorrespondingSourceObject: {fileID: 137976475885954992, guid: 38efdaadbfe1d624bbee439cb02e7661, type: 3}
   m_PrefabInstance: {fileID: 5364604016428825195}
   m_PrefabAsset: {fileID: 0}
