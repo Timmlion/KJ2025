@@ -30,7 +30,7 @@ public class BulletSpawner : MonoBehaviour
         
         currentBullet = Instantiate(bulletPrefab, transform);
         currentBullet.transform.position = transform.position;
-        currentBullet.SetColor(elementType);
+        currentBullet.SetElementType(elementType);
     }
 
     public void LaunchBullet(Vector2 direction)

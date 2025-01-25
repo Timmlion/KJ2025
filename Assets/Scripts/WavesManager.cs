@@ -12,7 +12,7 @@ public class WavesManager : MonoBehaviour
     public List<Wave> wavesList =  new List<Wave>
         {
             new Wave(10, ElementType.Yellow, 2.5f, 100),
-            new Wave(15, ElementType.Red, 3.0f, 80),
+            new Wave(15, ElementType.Red, 3.0f, 60),
             new Wave(20, ElementType.Blue, 1.5f, 120),
             new Wave(12, ElementType.Green, 2.8f, 90),
             new Wave(18, ElementType.Red, 3.5f, 70),

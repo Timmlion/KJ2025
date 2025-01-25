@@ -13,6 +13,7 @@ public class Bullet : MonoBehaviour
 {
     [SerializeField] private ElementTypeBulletPrefabPair[] elementTypeBulletPrefabDictionary;
     [SerializeField] private Transform bulletGfxAnchor;
+    public ElementType elementType;
     public int damage = 1000; // TODO: what should we do with dmg?
 
     public void SetPower(float bulletPower)
@@ -20,7 +21,7 @@ public class Bullet : MonoBehaviour
         bulletGfxAnchor.localScale = Vector3.one * bulletPower;
     }
 
-    public void SetColor(ElementType elementType)
+    public void SetElementType(ElementType elementType)
     {
         GameObject prefab = elementTypeBulletPrefabDictionary.
             FirstOrDefault(el => el.ElementType == elementType)

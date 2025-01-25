@@ -102,7 +102,13 @@ public class Bubble : MonoBehaviour
             Debug.Log($"Bubble took a hit from bullet! ({damage} dmg)");
             
             if (other.GetComponent<Bullet>())
-                TakeDamage(other.GetComponent<Bullet>().damage);        
+            {
+                int damageTaken = other.GetComponent<Bullet>().damage;
+                if (other.GetComponent<Bullet>().elementType == vulnerability) { damageTaken*=2;}
+                TakeDamage(damageTaken);
+            }
+        
+          
         }
     }
 
