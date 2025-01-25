@@ -27,11 +27,19 @@ public class PlayerController : MonoBehaviour
     private PlayerState CurrentPlayerState = PlayerState.Idle;
     [SerializeField] private Light orbLight;
     private float remainingBasicAttackCooldown = 0;
+    
+    private PlayersManager playersManager;
 
     public void InitializePlayer(PlayerInput input)
     {
         playerInput = input;
         orbLight.color = ElementColor(CurrentElementType);
+        playersManager = GameManager.Instance.PlayersManager;
+
+        // VIBRATION TEST FIELD - FAILED FOR NOW
+        //Gamepad gamepad = playerInput.devices[0] as Gamepad;
+        //print("bruuum");
+        //gamepad.SetMotorSpeeds(1,1);
     }
 
     public void OnLook(InputValue value)
@@ -74,12 +82,19 @@ public class PlayerController : MonoBehaviour
 
     private void SwitchToColor(ElementType elementType)
     {
-        print("Setting color");
-        orbLight.color = ElementColor(elementType);
-        print(orbLight.color);
-        CurrentElementType = elementType;
-        currentTower.SetTowerColor(CurrentElementType);
-        playerGfx.SetColor(CurrentElementType);
+        if (playersManager.IsElementTypeFree(elementType))
+        {
+            print("Setting color");
+            orbLight.color = ElementColor(elementType);
+            print(orbLight.color);
+            CurrentElementType = elementType;
+            currentTower.SetTowerColor(CurrentElementType);
+            playerGfx.SetColor(CurrentElementType);
+        }
+        else
+        {
+            //TODO: add vibrations
+        }
     }
 
     private Color ElementColor(ElementType et)
