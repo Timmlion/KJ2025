@@ -70,11 +70,11 @@ public class BulletSpawner : MonoBehaviour
         }
 
         currentBulletLifetime += Time.deltaTime;
-        float bulletPower = CalculateBulletPower();
-        currentBullet.SetPower(bulletPower);
+        float bulletSize = CalculateBulletSize();
+        currentBullet.SetSIze(bulletSize);
     }
 
-    private float CalculateBulletPower()
+    private float CalculateBulletSize()
     {
         return Mathf.Clamp(currentBulletLifetime, 1, maxBulletPower);
     }
