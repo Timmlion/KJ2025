@@ -80,15 +80,21 @@ public class Bubble : MonoBehaviour
         if (isSlowedFor >= 2 ) 
         {   
            currentSpeed = navMeshAgent.speed; 
-           slowedSpeed = currentSpeed*.5f; 
+           slowedSpeed = currentSpeed*.7f; 
            navMeshAgent.speed = slowedSpeed;
         }
+        if (isStunnedFor >= 1) 
+        {   
+           navMeshAgent.isStopped = true; 
+        }
+
+
         if (isSlowedFor <= 0 && navMeshAgent.speed <= currentSpeed)
         {
             navMeshAgent.speed = currentSpeed;
         }
         
-        if (isStunnedFor > 0) {}
+        if (isStunnedFor <= 0 && navMeshAgent.isStopped) { navMeshAgent.isStopped= false;}
         if (isBleedingFor > 0) {}
         isSlowedFor -= Time.deltaTime;
     }
@@ -106,7 +112,8 @@ public class Bubble : MonoBehaviour
         if(bulletData.IsSpecial)
         {
             PlayHitAnimation();
-            if (bulletData.ElementType == ElementType.Blue) {isSlowedFor = 2f;}
+            if (bulletData.ElementType == ElementType.Blue) {isSlowedFor = 4f;}
+            if (bulletData.ElementType == ElementType.Yellow) {isStunnedFor = 1f;}
             return;
         }
         if(!bulletData.IsSpecial)
@@ -146,11 +153,22 @@ public class Bubble : MonoBehaviour
         {
             Explosion explosion = other.GetComponent<Explosion>();
             damage = explosion.BulletData.Damage;
-            Debug.Log($"Bubble took a hit from bullet! ({damage} dmg)");
+            Debug.Log($"Bubble took a hit from explosion! ({damage} dmg)");
             
             int damageTaken = damage;
             if (explosion.BulletData.ElementType == vulnerability) { damageTaken*=3;}
             TakeDamage(explosion.BulletData);
+        }
+
+        if (other.GetComponent<Bullet>() != null)
+        {
+            Bullet bullet = other.GetComponent<Bullet>();
+            damage = bullet.BulletData.Damage;
+            Debug.Log($"Bubble took a hit from bullet! ({damage} dmg)");
+            
+            int damageTaken = damage;
+            if (bullet.BulletData.ElementType == vulnerability) { damageTaken*=3;}
+            TakeDamage(bullet.BulletData);
         }
     }
 
