@@ -32,9 +32,9 @@ public class Spawner : MonoBehaviour
     private float CalculateScale(float health)
     {
         // Define scaling rules
-        float scaleAt30HP = 01; // 30 HP corresponds to half scale
-        float scaleAt90HP = 1.5f;   // 90 HP corresponds to base scale
-        float scaleAt270HP = 2.5f;  // 270 HP corresponds to double scale
+        float scaleAt30HP = .9f; 
+        float scaleAt90HP = 1.3f;   
+        float scaleAt270HP = 2.2f;  
 
         // Interpolate between the scale values
         if (health <= 90f)

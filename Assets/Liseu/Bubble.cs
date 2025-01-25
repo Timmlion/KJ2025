@@ -10,13 +10,18 @@ public class Bubble : MonoBehaviour
     public int damage = 10;    
     public int reward = 50; 
     public ElementType vulnerability;   
-    public bool isStunned;
-    public bool isSlowed;
-    public bool isBleeding;
-    public bool isPoisoned;
+
+
+    [Header("Bubble Status")]
+    public float isStunnedFor;
+    public float isSlowedFor;
+    public float isBleedingFor;
+    public float isPoisonedFor;
 
     [Header("Pathfinding")]
     private NavMeshAgent navMeshAgent;
+    private float currentSpeed; 
+    private float slowedSpeed ; 
     
     [Header("References")]
     [SerializeField] private BubbleGfxController _bubbleGfxController;
@@ -66,7 +71,23 @@ public class Bubble : MonoBehaviour
     private void Update()
     {
         StartCoroutine(SetGoal());
+        
+        if (isSlowedFor >= 2 ) 
+        {   
+           currentSpeed = navMeshAgent.speed; 
+           slowedSpeed = currentSpeed*.5f; 
+           navMeshAgent.speed = slowedSpeed;
+        }
+        if (isSlowedFor <= 0 && navMeshAgent.speed <= currentSpeed)
+        {
+            navMeshAgent.speed = currentSpeed;
+        }
+        
+        if (isStunnedFor > 0) {}
+        if (isBleedingFor > 0) {}
     }
+
+
 
     public void TakeDamage(int damageAmount)
     {
