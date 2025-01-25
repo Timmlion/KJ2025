@@ -222,6 +222,17 @@
                 },
                 {
                     "name": "",
+                    "id": "963ec4b1-f0f1-4d27-91b3-1a7f1ed53489",
+                    "path": "<Mouse>/delta",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": ";Keyboard&Mouse",
+                    "action": "Look",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
                     "id": "0afad788-cfc6-42c8-92d2-6006d500f248",
                     "path": "<Gamepad>/rightShoulder",
                     "interactions": "",
