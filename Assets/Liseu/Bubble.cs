@@ -10,6 +10,10 @@ public class Bubble : MonoBehaviour
     public int damage = 10;    
     public int reward = 50; 
     public ElementType vulnerability;   
+    public bool isStunned;
+    public bool isSlowed;
+    public bool isBleeding;
+    public bool isPoisoned;
 
     [Header("Pathfinding")]
     private NavMeshAgent navMeshAgent;
@@ -25,17 +29,13 @@ public class Bubble : MonoBehaviour
             Debug.LogError("NavMeshAgent component is missing!");
             return;
         }
-
         StartCoroutine(SetGoal());
-
         navMeshAgent.speed = speed;
-
     }
 
     IEnumerator SetGoal() {
         yield return new WaitForSeconds(2f);  
         navMeshAgent.SetDestination(GetClosestObject().transform.position);
-        
     }
 
 
@@ -50,7 +50,6 @@ public class Bubble : MonoBehaviour
         {
             if (obj == null) continue; // Skip null objects
 
-            // Calculate distance between the current object and the list object
             float distance = Vector3.Distance(currentPosition, obj.transform.position);
 
             // Compare the distances and find the closest
@@ -64,8 +63,6 @@ public class Bubble : MonoBehaviour
         return closestObject;
     }
 
-
-    
 
     private void Update()
     {
@@ -104,11 +101,10 @@ public class Bubble : MonoBehaviour
             if (other.GetComponent<Bullet>())
             {
                 int damageTaken = other.GetComponent<Bullet>().damage;
-                if (other.GetComponent<Bullet>().elementType == vulnerability) { damageTaken*=2;}
+                if (other.GetComponent<Bullet>().elementType == vulnerability) { damageTaken*=3;}
                 TakeDamage(damageTaken);
             }
         
-          
         }
     }
 
