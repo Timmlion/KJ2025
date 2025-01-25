@@ -43,8 +43,7 @@ public class Bullet : MonoBehaviour
         }
         if(other.CompareTag("Ground") && !BulletData.IsSpecial || other.CompareTag("Enemy") && !BulletData.IsSpecial)
         {
-            FreezeRigidbody();
-            Destroy(gameObject, 1.5f);
+            Explode();
         }
     }
 
@@ -59,6 +58,6 @@ public class Bullet : MonoBehaviour
     private void FreezeRigidbody()
     {
         GetComponent<Collider>().enabled = false;
-        GetComponent<Rigidbody>().AddForce(Vector3.down * 1000, ForceMode.Impulse);
+        GetComponent<Rigidbody>().AddForce(Vector3.down * 100, ForceMode.Impulse);
     }
 }
