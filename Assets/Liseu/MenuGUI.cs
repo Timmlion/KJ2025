@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 public class MenuGUI : MonoBehaviour
 {
@@ -14,7 +15,18 @@ public class MenuGUI : MonoBehaviour
 
     void Update()
     {
-        
+        if (Time.timeScale == 0f)
+            { 
+                var gamepad = Gamepad.current;
+                if (gamepad == null)
+                    return; // No gamepad connected.
+
+                if (gamepad.rightTrigger.wasPressedThisFrame)
+                {
+                    StartGame();
+                }
+
+            }
     }
 
     public void StartGame() {
