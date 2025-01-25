@@ -11,9 +11,10 @@ GameObject:
   - component: {fileID: 4282201322464609640}
   - component: {fileID: 62544455152544762}
   - component: {fileID: 3156384584920310601}
+  - component: {fileID: 757413718224559816}
   m_Layer: 0
   m_Name: Bullet
-  m_TagString: Untagged
+  m_TagString: Bullet
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -56,6 +57,7 @@ MonoBehaviour:
   - ElementType: 3
     BulletPrefab: {fileID: 122746, guid: 2600ac3c92a32344aac7a38b64dc2f5c, type: 3}
   bulletGfxAnchor: {fileID: 570403717185872888}
+  damage: 1
 --- !u!54 &3156384584920310601
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -83,6 +85,27 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!135 &757413718224559816
+SphereCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1970535841070804582}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 1
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Radius: 0.78
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &8381014434867075208
 GameObject:
   m_ObjectHideFlags: 0

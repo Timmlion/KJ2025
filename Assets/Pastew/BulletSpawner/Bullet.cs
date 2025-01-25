@@ -13,6 +13,7 @@ public class Bullet : MonoBehaviour
 {
     [SerializeField] private ElementTypeBulletPrefabPair[] elementTypeBulletPrefabDictionary;
     [SerializeField] private Transform bulletGfxAnchor;
+    public int damage = 1000; // TODO: what should we do with dmg?
 
     public void SetPower(float bulletPower)
     {

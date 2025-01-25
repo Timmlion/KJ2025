@@ -99,9 +99,11 @@ public class Bubble : MonoBehaviour
 
         if (other.CompareTag("Bullet"))
         {
-            //damage = other.GetComponent<Bullet>().damage;
-            //if (other.GetComponent<Bullet>())
-            //TakeDamage(other.GetComponent<Bullet>().damage);        
+            damage = other.GetComponent<Bullet>().damage;
+            Debug.Log($"Bubble took a hit from bullet! ({damage} dmg)");
+            
+            if (other.GetComponent<Bullet>())
+                TakeDamage(other.GetComponent<Bullet>().damage);        
         }
     }
 }
