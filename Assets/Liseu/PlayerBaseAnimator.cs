@@ -24,6 +24,7 @@ public class PlayerBaseAnimator : MonoBehaviour
 
     private void PlayParticleEffect()
     {
+        Camera.main.GetComponent<CameraShake>().TriggerShake(2f, 1.5f);
         _particleEffectGameObject.SetActive(true);
     }
 }

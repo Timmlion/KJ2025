@@ -65,8 +65,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6fdf96a392f6bd54ba581ca676088d59, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  waveLevel: 1
-  waveCooldown: 30
+  waveLevel: 0
+  waveCooldown: 25
+  currentWave: 0
 --- !u!114 &6345732636335647312
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -79,10 +80,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ca656a48280c58144b708e0da3ba9f8f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerBaseList: []
+  playerBaseList:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
   playerList: []
-  towerList: []
-  spawnerList: []
+  spawnerList:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  GUIMenu: {fileID: 0}
 --- !u!114 &5230548606667526139
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -95,7 +105,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 50340a12353ab344fad02d80afb71867, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  towerControllerList: []
+  towerControllerList:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
 --- !u!114 &2056092195018550302
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -108,6 +126,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a30939d02028d66488101f0b95f16606, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  AllowSameColorPlayers: 1
+  players: []
 --- !u!114 &6062841125836711273
 MonoBehaviour:
   m_ObjectHideFlags: 0

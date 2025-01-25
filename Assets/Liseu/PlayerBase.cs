@@ -30,7 +30,6 @@ public class PlayerBase : MonoBehaviour
     [ContextMenu("Debug - DestroyBase")]
     public void DestroyBase()
     {
-        Camera.main.GetComponent<CameraShake>().TriggerShake();
         GameManager.Instance.LevelsManager.playerBaseList.Remove(this.gameObject);
         playerBaseAnimator.PlayDieAnimation();
         Destroy(gameObject, playerBaseAnimator.DieAnimationLength * 2);

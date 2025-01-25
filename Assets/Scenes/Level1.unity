@@ -5534,9 +5534,9 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 5230548606667526139, guid: e0e7bbea93fc5ed438305d931d638624, type: 3}
-      propertyPath: towerControllerList.Array.size
-      value: 8
+    - target: {fileID: 2056092195018550302, guid: e0e7bbea93fc5ed438305d931d638624, type: 3}
+      propertyPath: AllowSameColorPlayers
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5230548606667526139, guid: e0e7bbea93fc5ed438305d931d638624, type: 3}
       propertyPath: 'towerControllerList.Array.data[0]'
@@ -5574,30 +5574,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: GameManager
       objectReference: {fileID: 0}
-    - target: {fileID: 5964695515655473454, guid: e0e7bbea93fc5ed438305d931d638624, type: 3}
-      propertyPath: waveLevel
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5964695515655473454, guid: e0e7bbea93fc5ed438305d931d638624, type: 3}
-      propertyPath: waveCooldown
-      value: 25
-      objectReference: {fileID: 0}
     - target: {fileID: 6345732636335647312, guid: e0e7bbea93fc5ed438305d931d638624, type: 3}
       propertyPath: GUIMenu
       value: 
       objectReference: {fileID: 1595699125}
-    - target: {fileID: 6345732636335647312, guid: e0e7bbea93fc5ed438305d931d638624, type: 3}
-      propertyPath: playerBase
-      value: 
-      objectReference: {fileID: 0}
-    - target: {fileID: 6345732636335647312, guid: e0e7bbea93fc5ed438305d931d638624, type: 3}
-      propertyPath: spawnerList.Array.size
-      value: 6
-      objectReference: {fileID: 0}
-    - target: {fileID: 6345732636335647312, guid: e0e7bbea93fc5ed438305d931d638624, type: 3}
-      propertyPath: playerBaseList.Array.size
-      value: 3
-      objectReference: {fileID: 0}
     - target: {fileID: 6345732636335647312, guid: e0e7bbea93fc5ed438305d931d638624, type: 3}
       propertyPath: 'spawnerList.Array.data[0]'
       value: 
