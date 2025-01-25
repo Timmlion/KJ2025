@@ -41,6 +41,10 @@ public class Bullet : MonoBehaviour
         {
             Explode();
         }
+        if(other.CompareTag("Ground") && !BulletData.IsSpecial || other.CompareTag("Enemy") && !BulletData.IsSpecial)
+        {
+            Destroy(gameObject);
+        }
     }
 
     private void Explode()
