@@ -11,6 +11,9 @@ public class Bubble : MonoBehaviour
     public int damage = 10;    
     public int reward = 50; 
     public ElementType vulnerability;   
+    public int startingHealth = 100;
+    public float currentHealth = 100;
+    public HPBar hpBar;
 
 
     [Header("Bubble Status")]
@@ -38,6 +41,8 @@ public class Bubble : MonoBehaviour
             Debug.LogError("NavMeshAgent component is missing!");
             return;
         }
+        startingHealth = health;
+        currentHealth = health;
         StartCoroutine(SetGoal());
         navMeshAgent.speed = speed;
     }
@@ -104,6 +109,8 @@ public class Bubble : MonoBehaviour
     public void TakeDamage(BulletData bulletData)
     {
         health -= bulletData.Damage;
+        currentHealth = health;
+        hpBar.UpdateHealthBar(currentHealth/startingHealth);
         if (health <= 0)
         {
             Die();

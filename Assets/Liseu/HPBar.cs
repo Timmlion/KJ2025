@@ -12,7 +12,7 @@ public class HPBar : MonoBehaviour
 
     public void UpdateHealthBar(float value)
     {
-        Debug.Log("Updateing hp bar " + value );
+        healthBarImage.gameObject.SetActive(value < 0.9f);
         if (healthBarImage != null)
         {
             healthBarImage.fillAmount = value;
