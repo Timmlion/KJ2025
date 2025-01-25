@@ -43,14 +43,22 @@ public class Bullet : MonoBehaviour
         }
         if(other.CompareTag("Ground") && !BulletData.IsSpecial || other.CompareTag("Enemy") && !BulletData.IsSpecial)
         {
-            Destroy(gameObject);
+            FreezeRigidbody();
+            Destroy(gameObject, 1.5f);
         }
     }
 
     private void Explode()
     {
+        FreezeRigidbody();
         var explosion = Instantiate(explosionPrefab, transform.position, Quaternion.identity).GetComponent<Explosion>();
         explosion.PlayAnimation(BulletData);
-        Destroy(gameObject);
+        Destroy(gameObject, 1.5f);
+    }
+
+    private void FreezeRigidbody()
+    {
+        GetComponent<Collider>().enabled = false;
+        GetComponent<Rigidbody>().AddForce(Vector3.down * 1000, ForceMode.Impulse);
     }
 }
