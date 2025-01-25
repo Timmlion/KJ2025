@@ -321,11 +321,33 @@
                 },
                 {
                     "name": "",
+                    "id": "ff159181-86e6-4fd9-81f9-6aae982e94c5",
+                    "path": "<Keyboard>/1",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": ";Keyboard&Mouse",
+                    "action": "SwitchToGreen",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
                     "id": "646da002-3965-4dfa-b308-da9db76ec7f9",
                     "path": "<Gamepad>/buttonEast",
                     "interactions": "",
                     "processors": "",
                     "groups": ";Gamepad",
+                    "action": "SwitchToRed",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "dc63df5c-d70f-43c4-9ca9-6542f1fa4ad7",
+                    "path": "<Keyboard>/2",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": ";Keyboard&Mouse",
                     "action": "SwitchToRed",
                     "isComposite": false,
                     "isPartOfComposite": false
@@ -343,11 +365,33 @@
                 },
                 {
                     "name": "",
+                    "id": "1ef49b66-5fcf-4be1-8005-3ad0c3872f11",
+                    "path": "<Keyboard>/3",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": ";Keyboard&Mouse",
+                    "action": "SwitchToYellow",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
                     "id": "6bf3c023-534a-46af-a6f2-bde2cb1707e9",
                     "path": "<Gamepad>/buttonWest",
                     "interactions": "",
                     "processors": "",
                     "groups": ";Gamepad",
+                    "action": "SwitchToBlue",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "120c4bf0-3369-4fdb-9d14-6e1362e7edb4",
+                    "path": "<Keyboard>/4",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": ";Keyboard&Mouse",
                     "action": "SwitchToBlue",
                     "isComposite": false,
                     "isPartOfComposite": false
