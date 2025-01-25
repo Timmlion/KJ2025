@@ -68,6 +68,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9215c73214a15534e9aba4873a9704a2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _circles:
+  - element: 0
+    circleGameObject: {fileID: 3454590089681338621}
+  - element: 1
+    circleGameObject: {fileID: 1964215167879271397}
+  - element: 2
+    circleGameObject: {fileID: 16058780735895759}
+  - element: 3
+    circleGameObject: {fileID: 2301634602256047847}
 --- !u!54 &2660742290993942308
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -168,6 +177,26 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 19162ed644f0b5a4ea0b81076cb08e45, type: 3}
+--- !u!1 &16058780735895759 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 8226795766649480910, guid: 19162ed644f0b5a4ea0b81076cb08e45, type: 3}
+  m_PrefabInstance: {fileID: 8219771125385502209}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &1964215167879271397 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 7588623646243769828, guid: 19162ed644f0b5a4ea0b81076cb08e45, type: 3}
+  m_PrefabInstance: {fileID: 8219771125385502209}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &2301634602256047847 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 7918298121030172902, guid: 19162ed644f0b5a4ea0b81076cb08e45, type: 3}
+  m_PrefabInstance: {fileID: 8219771125385502209}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &3454590089681338621 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 6765344712365121276, guid: 19162ed644f0b5a4ea0b81076cb08e45, type: 3}
+  m_PrefabInstance: {fileID: 8219771125385502209}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &9205655724463264974 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 996264541101820623, guid: 19162ed644f0b5a4ea0b81076cb08e45, type: 3}
