@@ -22,6 +22,7 @@ public class PlayerBase : MonoBehaviour
 
     public void DestroyBase()
     {
+        Camera.main.GetComponent<CameraShake>().TriggerShake();
         GameManager.Instance.LevelsManager.playerBaseList.Remove(this.gameObject);
         Destroy(gameObject);
     }
