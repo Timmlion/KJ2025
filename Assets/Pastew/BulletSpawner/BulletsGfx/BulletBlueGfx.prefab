@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 8253318}
   - component: {fileID: 3416121805685637905}
   m_Layer: 0
-  m_Name: MissileBlueGfx
+  m_Name: BulletBlueGfx
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

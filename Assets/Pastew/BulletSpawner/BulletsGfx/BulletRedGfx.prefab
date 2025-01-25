@@ -9597,7 +9597,7 @@ GameObject:
   - component: {fileID: 8262750}
   - component: {fileID: -4999594913809164269}
   m_Layer: 0
-  m_Name: MissileRedGfx
+  m_Name: BulletRedGfx
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
