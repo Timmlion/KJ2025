@@ -35,6 +35,7 @@ public class WavesManager : MonoBehaviour
             // If the cooldown timer reaches 0, spawn the next wave
             if (cooldownTimer <= 0f)
             {
+                if (currentWave >= wavesList.Count) {currentWave = 0;}
                 StartCoroutine(SpawnWave(wavesList[currentWave]));
                 waveLevel++; // Move to the next wave
                 cooldownTimer = waveCooldown; // Reset the cooldown timer
@@ -46,8 +47,8 @@ public class WavesManager : MonoBehaviour
         {
             if (currentWave >= wavesList.Count) {currentWave = 0;}
             spawner.GetComponent<Spawner>().spawnBubble(wave);
+            yield return new WaitForSeconds(1f);  
             currentWave++;
-            yield return new WaitForSeconds(1f);       
         }
     }
 }
