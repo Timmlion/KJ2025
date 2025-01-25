@@ -13,6 +13,7 @@ public class Bubble : MonoBehaviour
 
     [Header("Pathfinding")]
     public Transform goal;     
+    private GameObject closestBase;
 
     private NavMeshAgent navMeshAgent;
 
@@ -26,6 +27,10 @@ public class Bubble : MonoBehaviour
             return;
         }
 
+    }
+
+    private void Awake ()
+    {
         if (goal == null)
         {
             goal = GameManager.Instance.LevelsManager.playerBaseList[0].transform;
@@ -35,11 +40,38 @@ public class Bubble : MonoBehaviour
 
         navMeshAgent.speed = speed;
         navMeshAgent.SetDestination(goal.position);
+
+        
     }
+
+    IEnumerator SetGoal() {
+        closestBase = GameManager.Instance.LevelsManager.playerBaseList[0];
+        yield return new WaitForSeconds(2f);  
+        foreach (GameObject pBase in GameManager.Instance.LevelsManager.playerBaseList)
+        {
+
+            if (Vector3.Distance(transform.position, pBase.transform.position) < Vector3.Distance(transform.position, closestBase.transform.position))
+            {
+                yield return closestBase = pBase;}
+
+            if (closestBase != null)
+            {
+                navMeshAgent.SetDestination(goal.position);
+                yield return pBase;
+            }
+            else
+            {
+                yield return null;
+            }
+        }
+}
+
+    
 
     private void Update()
     {
-        navMeshAgent.SetDestination(goal.position);
+        StartCoroutine(SetGoal());
+
     }
 
     public void TakeDamage(int damageAmount)
