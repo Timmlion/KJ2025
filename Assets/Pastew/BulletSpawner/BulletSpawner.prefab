@@ -46,6 +46,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   bulletPrefab: {fileID: 62544455152544762, guid: 8cafc39c96ec20a4eb26bfaa48ac9fb1, type: 3}
   debug: 0
-  maxLaunchBulletPower: 2
-  maxBulletPower: 3
-  baseLaunchPower: 1500
+  minLaunchBulletPower: 100
+  maxLaunchBulletPower: 3000
+  minBulletSize: 1
+  maxBulletSize: 2
+  maxLoadingTime: 0.5

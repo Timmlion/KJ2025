@@ -4,20 +4,18 @@ public class BulletSpawner : MonoBehaviour
 {
     [SerializeField] private Bullet bulletPrefab;
     [SerializeField] private bool debug = false;
-    [SerializeField] private float maxLaunchBulletPower = 2;
-    [SerializeField] private float maxBulletPower = 2;
-    [SerializeField] private float baseLaunchPower = 1000;
-    
+
+    [SerializeField] [Range(100, 1000)] private float minLaunchBulletPower = 100;
+    [SerializeField] [Range(2000, 5000)] private float maxLaunchBulletPower = 3000;
+    [SerializeField] [Range(0.5f, 1)] private float minBulletSize = 1;
+    [SerializeField] [Range(2, 3)] private float maxBulletSize = 2;
+    [SerializeField] [Range(0.5f, 2)] private float maxLoadingTime = 1;
+
     private Bullet currentBullet;
     private float currentBulletLifetime;
 
     void Update()
     {
-        if (debug)
-        {
-            HandleDebug();
-        }
-
         HandleCurrentBullet();
     }
 
@@ -27,7 +25,7 @@ public class BulletSpawner : MonoBehaviour
         {
             return;
         }
-        
+
         currentBullet = Instantiate(bulletPrefab, transform);
         currentBullet.transform.position = transform.position;
         currentBullet.SetElementType(elementType);
@@ -44,7 +42,7 @@ public class BulletSpawner : MonoBehaviour
         var bulletRigidbody = currentBullet.GetComponent<Rigidbody>();
         bulletRigidbody.isKinematic = false;
         bulletRigidbody.useGravity = true;
-        bulletRigidbody.AddForce(transform.forward * (baseLaunchPower * CalculateLaunchBulletPower()));
+        bulletRigidbody.AddForce(transform.forward * CalculateLaunchBulletPower());
         ClearCurrentBullet();
     }
 
@@ -71,67 +69,18 @@ public class BulletSpawner : MonoBehaviour
 
         currentBulletLifetime += Time.deltaTime;
         float bulletSize = CalculateBulletSize();
-        currentBullet.SetSIze(bulletSize);
+        currentBullet.SetSize(bulletSize);
     }
 
     private float CalculateBulletSize()
     {
-        return Mathf.Clamp(currentBulletLifetime, 1, maxBulletPower);
+        float bulletSize = Mathf.Lerp(minBulletSize, maxBulletSize, currentBulletLifetime / maxLoadingTime);
+        return Mathf.Clamp(bulletSize, minBulletSize, maxBulletSize);
     }
 
     private float CalculateLaunchBulletPower()
     {
-        return Mathf.Clamp(currentBulletLifetime, 1, maxLaunchBulletPower);
-    }
-
-    private void HandleDebug()
-    {
-        // Key down = create bullet 
-        if (Input.GetKeyDown(KeyCode.Alpha1))
-        {
-            CreateBullet(ElementType.Blue);
-        }
-
-        if (Input.GetKeyDown(KeyCode.Alpha2))
-        {
-            CreateBullet(ElementType.Green);
-        }
-
-        if (Input.GetKeyDown(KeyCode.Alpha3))
-        {
-            CreateBullet(ElementType.Red);
-        }
-
-        if (Input.GetKeyDown(KeyCode.Alpha4))
-        {
-            CreateBullet(ElementType.Yellow);
-        }
-
-        // launch bullet
-        if (Input.GetKeyUp(KeyCode.Alpha1))
-        {
-            LaunchBullet(GetRandomDirection());
-        }
-
-        if (Input.GetKeyUp(KeyCode.Alpha2))
-        {
-            LaunchBullet(GetRandomDirection());
-        }
-
-        if (Input.GetKeyUp(KeyCode.Alpha3))
-        {
-            LaunchBullet(GetRandomDirection());
-        }
-
-        if (Input.GetKeyUp(KeyCode.Alpha4))
-        {
-            LaunchBullet(GetRandomDirection());
-        }
-    }
-
-    private Vector2 GetRandomDirection()
-    {
-        var randomDirection = Random.insideUnitCircle;
-        return randomDirection;
+        float bulletPower = Mathf.Lerp(minLaunchBulletPower, maxLaunchBulletPower, currentBulletLifetime / maxLoadingTime);
+        return Mathf.Clamp(bulletPower, minLaunchBulletPower, maxLaunchBulletPower);
     }
 }

@@ -16,7 +16,7 @@ public class Bullet : MonoBehaviour
     public ElementType elementType;
     public int damage = 1000; // TODO: what should we do with dmg?
 
-    public void SetSIze(float bulletPower)
+    public void SetSize(float bulletPower)
     {
         bulletGfxAnchor.localScale = Vector3.one * bulletPower;
     }
