@@ -49,17 +49,19 @@ public class Bubble : MonoBehaviour
 
     IEnumerator SetGoal() {
         yield return new WaitForSeconds(2f);  
-        navMeshAgent.SetDestination(GetClosestObject().transform.position);
+        navMeshAgent.SetDestination(GetClosestObject());
     }
 
 
-    private GameObject GetClosestObject()
+    private Vector3 GetClosestObject()
     {
         GameObject closestObject = null;
         float closestDistance = Mathf.Infinity; // Start with the largest possible distance
         Vector3 currentPosition = transform.position;
-
+        
+        if (GameManager.Instance.LevelsManager.playerBaseList.Count <= 0) {navMeshAgent.isStopped = true; return Vector3.zero;}
         // Iterate through the list
+        else
         foreach (GameObject obj in GameManager.Instance.LevelsManager.playerBaseList)
         {
             if (obj == null) continue; // Skip null objects
@@ -74,7 +76,7 @@ public class Bubble : MonoBehaviour
             }
         }
 
-        return closestObject;
+        return closestObject.transform.position;
     }
 
     private void Update()
