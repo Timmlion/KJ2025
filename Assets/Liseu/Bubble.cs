@@ -160,7 +160,7 @@ public class Bubble : MonoBehaviour
             TakeDamage(explosion.BulletData);
         }
 
-        if (other.GetComponent<Bullet>() != null)
+        if (other.GetComponent<Bullet>() != null && !other.GetComponent<Bullet>().BulletData.IsSpecial)
         {
             Bullet bullet = other.GetComponent<Bullet>();
             damage = bullet.BulletData.Damage;
@@ -174,7 +174,9 @@ public class Bubble : MonoBehaviour
 
     private void AttackBase(Collider baseCollider)
     {
+        baseCollider.gameObject.GetComponent<PlayerBase>().TakeDamage(damage);;
         Destroy(gameObject);
+
     }
 
     public void SetVulnerability(ElementType elementType)

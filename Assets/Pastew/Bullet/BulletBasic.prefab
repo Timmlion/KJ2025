@@ -58,6 +58,8 @@ MonoBehaviour:
     BulletPrefab: {fileID: 1398121255876059026, guid: 53a28e6d8810caa40bcf1192fb420cc5, type: 3}
   bulletGfxAnchor: {fileID: 570403717185872888}
   explosionPrefab: {fileID: 0}
+  delayBeforeDestroyBasicBullet: 0.3
+  delayBeforeDestroySpecialBullet: 0.1
 --- !u!54 &3156384584920310601
 Rigidbody:
   m_ObjectHideFlags: 0
