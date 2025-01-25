@@ -1,3 +1,5 @@
+using System.Collections.Generic;
+using Unity.Mathematics;
 using UnityEngine;
 
 public class BulletSpawner : MonoBehaviour
@@ -16,9 +18,21 @@ public class BulletSpawner : MonoBehaviour
     [SerializeField] [Range(2, 3)] private float maxBulletSize = 2;
     [SerializeField] [Range(0.5f, 2)] private float maxLoadingTime = 1;
 
+    [SerializeField] private float bulletTargetDistanceFactor = 1;
+
+    [SerializeField] private ParticleSystem magicTargetBlue;
+    [SerializeField] private ParticleSystem magicTargetYellow;
+    [SerializeField] private ParticleSystem magicTargetGreen;
+    [SerializeField] private ParticleSystem magicTargetRed;
+    [SerializeField] private GameObject Target;
+    
+    
+    
     private Bullet currentBullet;
     private float currentBulletLifetime;
     public Vector3 currentDirection3D;
+
+    
 
     void Update()
     {
@@ -62,7 +76,7 @@ public class BulletSpawner : MonoBehaviour
         ClearCurrentBullet();
     }
 
-    private void SetDirection(Vector2 direction)
+    public void SetDirection(Vector2 direction)
     {
         currentDirection3D = new Vector3(direction.x, 0, direction.y);
         transform.LookAt(transform.position + currentDirection3D);
@@ -102,12 +116,33 @@ public class BulletSpawner : MonoBehaviour
 
     private void ShowTarget()
     {
-        if(currentBullet == null)
+        // Exit if there's no bullet or the bullet isn't special
+        if (!currentBullet || !currentBullet.BulletData.IsSpecial)
             return;
+        // Calculate the target position
+        Vector3 targetPosition = transform.position +
+                                 currentDirection3D *
+                                 (bulletTargetDistanceFactor * 
+                                  currentBulletLifetime);
         
-        if (!currentBullet.BulletData.IsSpecial)
-            return;
+        switch (currentBullet.BulletData.ElementType)
+        {
+            case ElementType.Blue:
+                magicTargetBlue.Play();
+                break;
+            case ElementType.Green:
+                magicTargetGreen.Play();
+                break;
+            case ElementType.Red:
+                magicTargetRed.Play();
+                break;
+            case ElementType.Yellow:
+                magicTargetYellow.Play();
+                break;
+        }
         
-        // draw target based on transform.position and currentDirection3D and currentBulletLifetime
+        Target.transform.position = targetPosition;
     }
+
+
 }
