@@ -1,8 +1,9 @@
 using UnityEngine;
+using UnityEngine.Serialization;
 
 public class TowerController : MonoBehaviour
 {
-    [SerializeField] private Light spotlight;
+    [SerializeField] private Light pointlight;
     
     private Vector2 currentDirection2D;
     
@@ -13,12 +14,14 @@ public class TowerController : MonoBehaviour
     public void SetDirection(Vector2 vector2)
     {
         currentDirection2D = vector2;
+        SetPointerDirection(currentDirection2D);
+
     }
 
     // Set the spotlight color based on the ElementType
     public void SetTowerColor(ElementType elementType)
     {
-        if (spotlight == null)
+        if (pointlight == null)
         {
             Debug.LogError("Spotlight is not assigned!");
             return;
@@ -27,19 +30,19 @@ public class TowerController : MonoBehaviour
         switch (elementType)
         {
             case ElementType.Yellow:
-                spotlight.color = Color.yellow;
+                pointlight.color = Color.yellow;
                 break;
             case ElementType.Red:
-                spotlight.color = Color.red;
+                pointlight.color = Color.red;
                 break;
             case ElementType.Blue:
-                spotlight.color = Color.blue;
+                pointlight.color = Color.blue;
                 break;
             case ElementType.Green:
-                spotlight.color = Color.green;
+                pointlight.color = Color.green;
                 break;
             case ElementType.None:
-                spotlight.color = Color.white;
+                pointlight.color = Color.white;
                 break;
         }
     }
@@ -52,6 +55,12 @@ public class TowerController : MonoBehaviour
     public void LaunchBullet()
     {
         bulletSpawner.LaunchBullet(currentDirection2D);
+    }
+
+    private void SetPointerDirection(Vector2 currentDirection2D)
+    {
+        Vector3 direction = new Vector3(currentDirection2D.x, 0, currentDirection2D.y).normalized;
+        
     }
     
     private void OnDrawGizmos()

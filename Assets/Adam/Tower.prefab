@@ -47,7 +47,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 507c5674772f341f3bd94997d015155f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  spotlight: {fileID: 1643324571114675161}
+  pointlight: {fileID: 1643324571114675161}
   bulletSpawner: {fileID: 4490876273189881662}
 --- !u!1 &7009243296013042311
 GameObject:
@@ -61,7 +61,7 @@ GameObject:
   - component: {fileID: 1643324571114675161}
   - component: {fileID: 8041876031021573914}
   m_Layer: 0
-  m_Name: Spot Light
+  m_Name: Point Light
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -75,7 +75,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7009243296013042311}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0.38, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
