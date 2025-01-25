@@ -48,6 +48,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   cordX: 0
   cordZ: 0
+  bulletSpawner: {fileID: 4490876273189881662}
 --- !u!1 &8349677111300466310
 GameObject:
   m_ObjectHideFlags: 0
