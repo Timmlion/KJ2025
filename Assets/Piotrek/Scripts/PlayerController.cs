@@ -2,6 +2,7 @@ using System;
 using DG.Tweening;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.InputSystem.iOS;
 
 enum PlayerState
 {
@@ -40,6 +41,8 @@ public class PlayerController : MonoBehaviour
         //Gamepad gamepad = playerInput.devices[0] as Gamepad;
         //print("bruuum");
         //gamepad.SetMotorSpeeds(1,1);
+        Gamepad gamepad = Gamepad.current;
+        gamepad.SetMotorSpeeds(1f, 1f);
     }
 
     public void OnLook(InputValue value)
