@@ -52,6 +52,11 @@ MonoBehaviour:
   moveDuration: 0.2
   basicAttackCooldown: 0.15
   orbLight: {fileID: 290991016147983180}
+  colorYellow: {r: 1, g: 0.4287996, b: 0.18431371, a: 1}
+  colorRed: {r: 0.8679245, g: 0.061409745, b: 0.061409745, a: 1}
+  colorBlue: {r: 0.043137256, g: 0.24809979, b: 0.8509804, a: 1}
+  colorGreen: {r: 0.21832882, g: 0.6792453, b: 0, a: 1}
+  colorNone: {r: 1, g: 1, b: 1, a: 1}
 --- !u!114 &968460847864447918
 MonoBehaviour:
   m_ObjectHideFlags: 0

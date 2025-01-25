@@ -28,6 +28,12 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private Light orbLight;
     private float remainingBasicAttackCooldown = 0;
     
+    [SerializeField] private Color colorYellow = Color.yellow;
+    [SerializeField] private Color colorRed = Color.red;
+    [SerializeField] private Color colorBlue = Color.blue;
+    [SerializeField] private Color colorGreen = Color.green;
+    [SerializeField] private Color colorNone = Color.white;
+    
     private PlayersManager playersManager;
 
     public void InitializePlayer(PlayerInput input)
@@ -102,20 +108,20 @@ public class PlayerController : MonoBehaviour
         switch (et)
         {
             case ElementType.Yellow:
-                return Color.yellow;
+                return colorYellow;
 
             case ElementType.Red:
-                return Color.red;
+                return colorRed;
 
             case ElementType.Blue:
-                return Color.blue;
+                return colorBlue;
 
             case ElementType.Green:
-                return Color.green;
+                return colorGreen;
 
             default:
                 Debug.LogWarning("Unknown ElementType, returning default white color.");
-                return Color.white;
+                return colorNone;
         }
     }
     public void OnPreviousTower(InputValue value)

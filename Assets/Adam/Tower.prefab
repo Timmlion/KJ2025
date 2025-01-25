@@ -51,6 +51,11 @@ MonoBehaviour:
   pointlight: {fileID: 1643324571114675161}
   spotlight: {fileID: 6272112626869142965}
   bulletSpawner: {fileID: 4490876273189881662}
+  colorYellow: {r: 1, g: 0.92156863, b: 0.015686275, a: 1}
+  colorRed: {r: 1, g: 0, b: 0, a: 1}
+  colorBlue: {r: 0, g: 0, b: 1, a: 1}
+  colorGreen: {r: 0, g: 1, b: 0, a: 1}
+  colorNone: {r: 1, g: 1, b: 1, a: 1}
 --- !u!1 &1376865966363771405
 GameObject:
   m_ObjectHideFlags: 0
@@ -189,7 +194,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &5541555562030388369
 Transform:
   m_ObjectHideFlags: 0
@@ -212,7 +217,7 @@ Light:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7009243296013042311}
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 11
   m_Type: 2
   m_Color: {r: 1, g: 1, b: 1, a: 1}

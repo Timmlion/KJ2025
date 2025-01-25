@@ -1,5 +1,4 @@
 using UnityEngine;
-using UnityEngine.Serialization;
 
 public class TowerController : MonoBehaviour
 {
@@ -10,6 +9,12 @@ public class TowerController : MonoBehaviour
     private Vector2 currentDirection2D;
     
     private bool posessed = false;
+    [SerializeField] private Color colorYellow = Color.yellow;
+    [SerializeField] private Color colorRed = Color.red;
+    [SerializeField] private Color colorBlue = Color.blue;
+    [SerializeField] private Color colorGreen = Color.green;
+    [SerializeField] private Color colorNone = Color.white;
+
     public bool Posessed
     {
         get => posessed;
@@ -56,19 +61,19 @@ public class TowerController : MonoBehaviour
         switch (elementType)
         {
             case ElementType.Yellow:
-                pointlight.color = Color.yellow;
+                pointlight.color = colorYellow;
                 break;
             case ElementType.Red:
-                pointlight.color = Color.red;
+                pointlight.color = colorRed;
                 break;
             case ElementType.Blue:
-                pointlight.color = Color.blue;
+                pointlight.color = colorBlue;
                 break;
             case ElementType.Green:
-                pointlight.color = Color.green;
+                pointlight.color = colorGreen;
                 break;
             case ElementType.None:
-                pointlight.color = Color.white;
+                pointlight.color = colorNone;
                 break;
         }
     }
