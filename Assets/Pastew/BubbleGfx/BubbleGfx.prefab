@@ -87,6 +87,8 @@ MonoBehaviour:
   - type: 2
     material: {fileID: 2100000, guid: b3ad386aba28716448079dcf67d7aede, type: 2}
   meshRenderer: {fileID: 5447339258053746139}
+  damageShakeDuration: 0.5
+  damageShakeStrength: 0.3
 --- !u!1001 &5364604016428825195
 PrefabInstance:
   m_ObjectHideFlags: 0
