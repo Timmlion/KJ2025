@@ -26,6 +26,8 @@ public class Bubble : MonoBehaviour
     [Header("References")]
     [SerializeField] private BubbleGfxController _bubbleGfxController;
 
+    [SerializeField] private Animator animator;
+
     private void Awake ()
     {
         navMeshAgent = GetComponent<NavMeshAgent>();
@@ -100,8 +102,9 @@ public class Bubble : MonoBehaviour
 
     private void Die()
     {
-        Debug.Log("Bubble destroyed!");
-        Destroy(gameObject);
+        navMeshAgent.isStopped = true;
+        animator.SetTrigger("Die");
+        Destroy(gameObject, 1);
     }
 
     private void OnTriggerEnter(Collider other)
@@ -109,7 +112,7 @@ public class Bubble : MonoBehaviour
         if (other.CompareTag("PlayerBase"))
         {
             Debug.Log("Bubble hit the base!");
-            Destroy(gameObject);
+            Die();
         }
 
         if (other.GetComponent<Explosion>() != null)

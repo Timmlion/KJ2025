@@ -195,7 +195,12 @@ MonoBehaviour:
   damage: 10
   reward: 50
   vulnerability: 0
+  isStunnedFor: 0
+  isSlowedFor: 0
+  isBleedingFor: 0
+  isPoisonedFor: 0
   _bubbleGfxController: {fileID: 6942789948584561322}
+  animator: {fileID: 8624111522465122285}
 --- !u!195 &2812747156129017734
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -291,3 +296,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 164417b6b7be95c4a80de0591d8cbc7a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!95 &8624111522465122285 stripped
+Animator:
+  m_CorrespondingSourceObject: {fileID: 5413537254619921857, guid: a97965bac8579ec46846eb899847d38d, type: 3}
+  m_PrefabInstance: {fileID: 4363496350396299820}
+  m_PrefabAsset: {fileID: 0}
