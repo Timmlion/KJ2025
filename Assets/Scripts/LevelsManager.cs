@@ -16,7 +16,13 @@ public class LevelsManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+        if (playerBaseList.Count <= 0) {
+            GameOver();
+        }
+    }
+
+    void GameOver() {
+        Time.timeScale = 0f;
     }
 
     
