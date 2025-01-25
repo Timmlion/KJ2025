@@ -9,9 +9,11 @@ public class LevelsManager : MonoBehaviour
     public List<GameObject> playerList = new List<GameObject>();
     public List<GameObject> spawnerList = new List<GameObject>();
 
+    public GameObject GUIMenu;
+
     void Start()
     {
-       // Time.timeScale = 0f;
+        Time.timeScale = 0f;
     }
 
 
@@ -22,17 +24,17 @@ public class LevelsManager : MonoBehaviour
             GameOver();
         }
     }
-
-    void StartGame() {
+    public void StartLevel() {
         Time.timeScale = 1f;
     }
 
-    void RestartLevel() {
+    public void RestartLevel() {
         SceneManager.LoadScene(SceneManager.GetActiveScene().name);
     }
 
     void GameOver() {
         Time.timeScale = 0f;
+        GUIMenu.GetComponent<MenuGUI>().endgameScreen.SetActive(true);
     }
 
     
