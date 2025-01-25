@@ -43,8 +43,7 @@ public class Bullet : MonoBehaviour
         }
         if(other.CompareTag("Ground") && !BulletData.IsSpecial || other.CompareTag("Enemy") && !BulletData.IsSpecial)
         {
-            FreezeRigidbody();
-            Destroy(gameObject, 1.5f);
+            Explode();
         }
     }
 
