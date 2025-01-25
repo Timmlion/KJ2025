@@ -54,7 +54,7 @@ SphereCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Radius: 10
+  m_Radius: 3
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!114 &229555894678112627
 MonoBehaviour:
@@ -142,6 +142,22 @@ PrefabInstance:
     - target: {fileID: 996264541101820623, guid: 19162ed644f0b5a4ea0b81076cb08e45, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6293918487452172687, guid: 19162ed644f0b5a4ea0b81076cb08e45, type: 3}
+      propertyPath: SizeModule.y.minMaxState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 6293918487452172687, guid: 19162ed644f0b5a4ea0b81076cb08e45, type: 3}
+      propertyPath: SizeModule.z.minMaxState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 6293918487452172687, guid: 19162ed644f0b5a4ea0b81076cb08e45, type: 3}
+      propertyPath: InitialModule.startSize.scalar
+      value: 1.3
+      objectReference: {fileID: 0}
+    - target: {fileID: 6293918487452172687, guid: 19162ed644f0b5a4ea0b81076cb08e45, type: 3}
+      propertyPath: InitialModule.startSize.minScalar
+      value: 0.5
       objectReference: {fileID: 0}
     - target: {fileID: 8136158778859168964, guid: 19162ed644f0b5a4ea0b81076cb08e45, type: 3}
       propertyPath: m_Name
