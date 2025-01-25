@@ -93,23 +93,34 @@ public class Bubble : MonoBehaviour
 
 
 
-    public void TakeDamage(int damageAmount)
+    public void TakeDamage(BulletData bulletData)
     {
-        health -= damageAmount;
+        health -= bulletData.Damage;
         if (health <= 0)
         {
             Die();
+            return;
         }
-        else
+        if(bulletData.IsSpecial)
         {
-            takeDamageSequence?.Kill();
-            takeDamageSequence = DOTween.Sequence();
-            takeDamageSequence.AppendCallback(() => navMeshAgent.isStopped = true);
-            takeDamageSequence.Append(_bubbleGfxController.PlayTakeDamageAnimation());
-            takeDamageSequence.AppendInterval(0.5f);
-            takeDamageSequence.AppendCallback(() => navMeshAgent.isStopped = false);
-            takeDamageSequence.Play();
+            PlayHitAnimation();
+            return;
         }
+        if(!bulletData.IsSpecial)
+        {
+            // ???
+        }
+    }
+
+    private void PlayHitAnimation()
+    {
+        takeDamageSequence?.Kill();
+        takeDamageSequence = DOTween.Sequence();
+        takeDamageSequence.AppendCallback(() => navMeshAgent.isStopped = true);
+        takeDamageSequence.Append(_bubbleGfxController.PlayTakeDamageAnimation());
+        takeDamageSequence.AppendInterval(0.5f);
+        takeDamageSequence.AppendCallback(() => navMeshAgent.isStopped = false);
+        takeDamageSequence.Play();
     }
 
     private void Die()
@@ -136,7 +147,7 @@ public class Bubble : MonoBehaviour
             
             int damageTaken = damage;
             if (explosion.BulletData.ElementType == vulnerability) { damageTaken*=3;}
-            TakeDamage(damageTaken);
+            TakeDamage(explosion.BulletData);
         }
     }
 
