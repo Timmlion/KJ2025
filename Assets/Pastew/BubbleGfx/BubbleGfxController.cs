@@ -1,5 +1,6 @@
 using System;
 using System.Linq;
+using DG.Tweening;
 using UnityEngine;
 
 [Serializable]
@@ -13,6 +14,8 @@ public class BubbleGfxController : MonoBehaviour
 {
     [SerializeField] private ElementMaterialPair[] elementMaterialDict;
     [SerializeField] private SkinnedMeshRenderer meshRenderer;
+    [SerializeField] private float damageShakeDuration = 0.5f;
+    [SerializeField] private float damageShakeStrength = 1;
 
     public void SetColor(ElementType elementType)
     {
@@ -23,5 +26,10 @@ public class BubbleGfxController : MonoBehaviour
         }
         
         meshRenderer.material = material;
+    }
+
+    public Tween PlayTakeDamageAnimation()
+    {
+        return transform.DOShakePosition(damageShakeDuration, damageShakeStrength).SetLoops(1, LoopType.Yoyo);
     }
 }

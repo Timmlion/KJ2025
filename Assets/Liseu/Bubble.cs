@@ -1,6 +1,7 @@
 using UnityEngine;
 using UnityEngine.AI;
 using System.Collections;
+using DG.Tweening;
 
 public class Bubble : MonoBehaviour
 {
@@ -98,6 +99,15 @@ public class Bubble : MonoBehaviour
         {
             Die();
         }
+        else
+        {
+            Sequence s = DOTween.Sequence();
+            s.AppendCallback(() => navMeshAgent.isStopped = true);
+            s.Append(_bubbleGfxController.PlayTakeDamageAnimation());
+            s.AppendInterval(0.5f);
+            s.AppendCallback(() => navMeshAgent.isStopped = false);
+            s.Play();
+        }
     }
 
     private void Die()
@@ -112,7 +122,7 @@ public class Bubble : MonoBehaviour
         if (other.CompareTag("PlayerBase"))
         {
             Debug.Log("Bubble hit the base!");
-            Die();
+            AttackBase(other);
         }
 
         if (other.GetComponent<Explosion>() != null)
@@ -126,6 +136,12 @@ public class Bubble : MonoBehaviour
             TakeDamage(damageTaken);
         }
     }
+
+    private void AttackBase(Collider baseCollider)
+    {
+        Destroy(gameObject);
+    }
+
     public void SetVulnerability(ElementType elementType)
     {
         vulnerability = elementType;
