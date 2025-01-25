@@ -95,7 +95,7 @@ MonoBehaviour:
   debug: 0
   maxLaunchBulletPower: 2
   maxBulletPower: 2
-  baseLaunchPower: 500
+  baseLaunchPower: 2000
 --- !u!1001 &7115144735481494199
 PrefabInstance:
   m_ObjectHideFlags: 0
