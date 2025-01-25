@@ -29,8 +29,6 @@ public class WavesManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-    if (waveLevel < wavesList.Count)
-        {
             // Decrement the cooldown timer
             cooldownTimer -= Time.deltaTime;
 
@@ -41,16 +39,15 @@ public class WavesManager : MonoBehaviour
                 waveLevel++; // Move to the next wave
                 cooldownTimer = waveCooldown; // Reset the cooldown timer
             }
-        }
     }
 
     IEnumerator SpawnWave(Wave wave) {
         foreach (GameObject spawner in GameManager.Instance.LevelsManager.spawnerList)
         {
-            if (currentWave > wavesList.Count) {currentWave = 0;}
+            if (currentWave >= wavesList.Count) {currentWave = 0;}
             spawner.GetComponent<Spawner>().spawnBubble(wave);
             currentWave++;
-            yield return new WaitForSeconds(0.5f);       
+            yield return new WaitForSeconds(1f);       
         }
     }
 }

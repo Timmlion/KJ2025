@@ -22,8 +22,8 @@ public class Spawner : MonoBehaviour
         {
             GameObject bubble = Instantiate(bubblePrefab, this.transform.position, Quaternion.identity);
             bubble.GetComponent<Bubble>().vulnerability = wave.type;
-            bubble.GetComponent<Bubble>().health = wave.health;
-            bubble.GetComponent<Bubble>().speed = wave.speed;
+            bubble.GetComponent<Bubble>().health = wave.health + 5 * GameManager.Instance.WavesManager.waveLevel;
+            bubble.GetComponent<Bubble>().speed = wave.speed + .05f * GameManager.Instance.WavesManager.waveLevel;
         }
     }
 
