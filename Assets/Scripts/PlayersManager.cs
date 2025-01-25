@@ -40,14 +40,14 @@ public class PlayersManager : MonoBehaviour
 
     public bool IsElementTypeFree(ElementType elementType)
     {
-        return players.Any(p => p.ElementType == elementType);
+        return players.Any(p => p.CurrentElementType == elementType);
     }
     
     public ElementType GetRandomUnassignedElementType()
     {
         var allElementTypes = Enum.GetValues(typeof(ElementType)).Cast<ElementType>();
         
-        var assignedElementTypes = players.Select(p => p.ElementType).ToHashSet();
+        var assignedElementTypes = players.Select(p => p.CurrentElementType).ToHashSet();
         
         var availableElementTypes = allElementTypes.Where(et => !assignedElementTypes.Contains(et)).ToList();
 

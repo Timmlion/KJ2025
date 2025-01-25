@@ -3,7 +3,7 @@ using UnityEngine.InputSystem;
 
 public class PlayerController : MonoBehaviour
 {
-    public ElementType ElementType;
+    public ElementType CurrentElementType = ElementType.Blue;
 
     private TowerController currentTower;
     
@@ -19,22 +19,7 @@ public class PlayerController : MonoBehaviour
     public void OnLook(InputValue value)
     {
         moveInput = value.Get<Vector2>();
-    }
-    
-    public void OnBasicAttack(InputValue value)
-    {
-        if (value.isPressed)
-        {
-            BasicAttack();
-        }
-    }
-    
-    public void OnSpecialAttack(InputValue value)
-    {
-        if (value.isPressed)
-        {
-            SpecialAttack();
-        }
+        currentTower?.SetDirection(moveInput);
     }
 
     public void OnSwitchToYellow(InputValue value)
@@ -71,7 +56,8 @@ public class PlayerController : MonoBehaviour
 
     private void SwitchToColor(ElementType elementType)
     {
-        ElementType = elementType;
+        CurrentElementType = elementType;
+        playerGfx.SetColor(CurrentElementType);
     }
     
     public void OnPreviousTower(InputValue value)
@@ -92,19 +78,31 @@ public class PlayerController : MonoBehaviour
         }
     }
     
-    private void BasicAttack()
+    private void OnBasicAttack(InputValue value)
     {
-        Debug.Log($"Player {playerInput.playerIndex} shoot!");
+        if (currentTower == null)
+        {
+            // TODO: Consider how to handle this. Is player flying to next tower?
+        }
+
+        if (value.Get<float>() > 0.6f)
+        {
+            currentTower.CreateBullet(CurrentElementType, AttackType.Basic);
+        }
+        else if (value.Get<float>() < 0.3f)
+        {
+            currentTower.LaunchBullet();
+        }
     }
     
-    private void SpecialAttack()
+    private void OnSpecialAttack(InputValue value)
     {
-        Debug.Log($"Player {playerInput.playerIndex} KAMEHAMEHA!");
+        OnBasicAttack(value); // TODO: this
     }
 
     private void Update()
     {
-        Vector3 movement = new Vector3(moveInput.x, 0, moveInput.y) * Time.deltaTime * 5f;
+        Vector3 movement = new Vector3(moveInput.x, 0, moveInput.y) * (Time.deltaTime * 5f);
         transform.Translate(movement);
     }
 
@@ -115,7 +113,7 @@ public class PlayerController : MonoBehaviour
 
     public void SetElementType(ElementType elementType)
     {
-        ElementType = elementType;
+        CurrentElementType = elementType;
         playerGfx.SetColor(elementType);
     }
 }
