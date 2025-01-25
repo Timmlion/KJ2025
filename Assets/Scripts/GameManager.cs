@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 public class GameManager : MonoBehaviour
 {
@@ -12,6 +13,8 @@ public class GameManager : MonoBehaviour
     private void Awake()
     {
         Instance = this;
+        
+        InputSystem.settings.supportedDevices = new[] { "Gamepad" };
     }
     
     
