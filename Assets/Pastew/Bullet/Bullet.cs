@@ -59,6 +59,6 @@ public class Bullet : MonoBehaviour
     private void FreezeRigidbody()
     {
         GetComponent<Collider>().enabled = false;
-        GetComponent<Rigidbody>().AddForce(Vector3.down * 1000, ForceMode.Impulse);
+        GetComponent<Rigidbody>().AddForce(Vector3.down * 100, ForceMode.Impulse);
     }
 }
