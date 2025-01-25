@@ -2,36 +2,33 @@ using UnityEngine;
 
 public class TowerController : MonoBehaviour
 {
-    public float cordX = 0; // Input X (-1 to 1)
-    public float cordZ = 0; // Input Z (-1 to 1)
-
+    private Vector2 currentDirection2D;
+    
     public bool Posessed { get; set; } = false;
 
     [SerializeField] private BulletSpawner bulletSpawner;
     
-    public void SetCord(Vector2 vector2)
+    public void SetDirection(Vector2 vector2)
     {
-        cordX = vector2.x;
-        cordZ = vector2.y;
+        currentDirection2D = vector2;
     }
 
-    public void CreateBullet(ElementType elementType, AttackStage attackStage, AttackType attackType)
+    public void CreateBullet(ElementType elementType, AttackType attackType)
     {
-        AttackStage currentAttackStage = attackStage;
-        AttackType currentAttackType = attackType;
+        AttackType currentAttackType = attackType; // TODO: attackType
         bulletSpawner.CreateBullet(elementType);
     }
 
-    public void LaunchBullet(Vector2 direction)
+    public void LaunchBullet()
     {
-        bulletSpawner.LaunchBullet(direction);
+        bulletSpawner.LaunchBullet(currentDirection2D);
     }
     
     // Update is called once per frame
     void Update()
     {
         // Normalize the direction vector to ensure a consistent magnitude
-        Vector3 inputDirection = new Vector3(cordX, 0, cordZ).normalized;
+        Vector3 inputDirection = new Vector3(currentDirection2D.x, 0, currentDirection2D.y).normalized;
 
         if (inputDirection.sqrMagnitude > 0.01f) // Avoid small noise values
         {
@@ -47,7 +44,7 @@ public class TowerController : MonoBehaviour
     private void OnDrawGizmos()
     {
         // Determine the direction based on cordX and cordZ
-        Vector3 direction = new Vector3(cordX, 0, cordZ).normalized;
+        Vector3 direction = new Vector3(currentDirection2D.x, 0, currentDirection2D.y).normalized;
 
         if (direction.sqrMagnitude > 0.01f )
         {
