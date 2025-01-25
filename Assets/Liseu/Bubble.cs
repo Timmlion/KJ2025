@@ -12,59 +12,56 @@ public class Bubble : MonoBehaviour
     public ElementType vulnerability;   
 
     [Header("Pathfinding")]
-    public Transform goal;     
-    private GameObject closestBase;
-
     private NavMeshAgent navMeshAgent;
 
-    private void Start()
+
+    private void Awake ()
     {
         navMeshAgent = GetComponent<NavMeshAgent>();
-
         if (navMeshAgent == null)
         {
             Debug.LogError("NavMeshAgent component is missing!");
             return;
         }
 
-    }
-
-    private void Awake ()
-    {
-        if (goal == null)
-        {
-            goal = GameManager.Instance.LevelsManager.playerBaseList[0].transform;
-
-            return;
-        }
+        StartCoroutine(SetGoal());
 
         navMeshAgent.speed = speed;
-        navMeshAgent.SetDestination(goal.position);
 
-        
     }
 
     IEnumerator SetGoal() {
-        closestBase = GameManager.Instance.LevelsManager.playerBaseList[0];
         yield return new WaitForSeconds(2f);  
-        foreach (GameObject pBase in GameManager.Instance.LevelsManager.playerBaseList)
+        navMeshAgent.SetDestination(GetClosestObject().transform.position);
+        
+    }
+
+
+    private GameObject GetClosestObject()
+    {
+        GameObject closestObject = null;
+        float closestDistance = Mathf.Infinity; // Start with the largest possible distance
+        Vector3 currentPosition = transform.position;
+
+        // Iterate through the list
+        foreach (GameObject obj in GameManager.Instance.LevelsManager.playerBaseList)
         {
+            if (obj == null) continue; // Skip null objects
 
-            if (Vector3.Distance(transform.position, pBase.transform.position) < Vector3.Distance(transform.position, closestBase.transform.position))
-            {
-                yield return closestBase = pBase;}
+            // Calculate distance between the current object and the list object
+            float distance = Vector3.Distance(currentPosition, obj.transform.position);
 
-            if (closestBase != null)
+            // Compare the distances and find the closest
+            if (distance < closestDistance)
             {
-                navMeshAgent.SetDestination(goal.position);
-                yield return pBase;
-            }
-            else
-            {
-                yield return null;
+                closestDistance = distance;
+                closestObject = obj;
             }
         }
-}
+
+        return closestObject;
+    }
+
 
     
 
