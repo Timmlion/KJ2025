@@ -16,9 +16,9 @@ public class PlayerBaseAnimator : MonoBehaviour
     {
         Sequence sequence = DOTween.Sequence();
         sequence.AppendCallback(() => animator.SetBool("Die", true));
-        sequence.AppendInterval(DieAnimationLength * 0.97f);
+        sequence.AppendInterval(DieAnimationLength * 0.98f);
         sequence.AppendCallback(PlayParticleEffect);
-        sequence.AppendInterval(DieAnimationLength * 0.03f);
+        sequence.AppendInterval(DieAnimationLength * 0.02f);
         sequence.Play();
     }
 
