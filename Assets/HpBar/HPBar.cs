@@ -22,7 +22,7 @@ public class HPBar : MonoBehaviour
 
     public void UpdateHealthBar(float value)
     {
-        gfxAnchor.gameObject.SetActive(value is < 0.95f and > 0);
+        gfxAnchor.gameObject.SetActive(value is < 0.999f and > 0);
 
         if (healthBarImage != null)
         {
