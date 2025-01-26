@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 public class TowerController : MonoBehaviour
 {
@@ -75,9 +76,9 @@ public class TowerController : MonoBehaviour
         }
     }
     
-    public void CreateBullet(ElementType elementType, bool isSpecial)
+    public void CreateBullet(ElementType elementType, bool isSpecial, PlayerInput owner)
     {
-        bulletSpawner.CreateBullet(elementType, isSpecial);
+        bulletSpawner.CreateBullet(elementType, isSpecial, owner);
     }
 
     public void LaunchBullet()

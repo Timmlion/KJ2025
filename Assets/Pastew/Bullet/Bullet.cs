@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Linq;
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 [Serializable]
 public class ElementTypeBulletPrefabPair
@@ -34,6 +35,11 @@ public class Bullet : MonoBehaviour
     {
         BulletData.IsSpecial = isSpecial;
     }
+    
+    public void SetOwner(PlayerInput owner)
+    {
+        BulletData.Owner = owner;
+    }
 
     private void OnTriggerEnter(Collider other)
     {
@@ -54,6 +60,8 @@ public class Bullet : MonoBehaviour
         explosion.transform.position = transformPosition;
         
         explosion.PlayAnimation(BulletData);
+        if(BulletData.IsSpecial)
+            GameManager.Instance.HapticsManager.RublePlayer(0.3f, 0.3f, 0.5f, BulletData.Owner);
         Destroy(gameObject, 1.5f);
     }
 

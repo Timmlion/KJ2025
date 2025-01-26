@@ -91,12 +91,12 @@ public class PlayersManager : MonoBehaviour
 
         var availableElementTypes = allElementTypes.Where(et => !assignedElementTypes.Contains(et)).ToList();
 
-        if (availableElementTypes.Count == 0)
+        if (availableElementTypes.Count > 0)
         {
-            Debug.LogError("All elements are assigned!");
+            var randomIndex = Random.Range(0, availableElementTypes.Count);
+            return availableElementTypes[randomIndex];
         }
 
-        var randomIndex = Random.Range(0, availableElementTypes.Count);
-        return availableElementTypes[randomIndex];
+        return ElementType.Blue;
     }
 }

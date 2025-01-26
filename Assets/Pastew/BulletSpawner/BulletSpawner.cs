@@ -1,6 +1,7 @@
 using System.Collections.Generic;
 using Unity.Mathematics;
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 public class BulletSpawner : MonoBehaviour
 {
@@ -41,7 +42,7 @@ public class BulletSpawner : MonoBehaviour
         ShowTarget();
     }
 
-    public void CreateBullet(ElementType elementType, bool isSpecial)
+    public void CreateBullet(ElementType elementType, bool isSpecial, PlayerInput owner)
     {
         if (currentBullet != null)
         {
@@ -50,6 +51,7 @@ public class BulletSpawner : MonoBehaviour
 
         currentBullet = Instantiate(isSpecial ? bulletPrefab : basicAttackBulletPrefab, transform);
         currentBullet.SetIsSpecial(isSpecial);
+        currentBullet.SetOwner(owner);
         currentBullet.transform.position = transform.position;
         currentBullet.SetElementType(elementType);
     }

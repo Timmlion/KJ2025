@@ -88,6 +88,8 @@ public class PlayerController : MonoBehaviour
 
     private void SwitchToColor(ElementType elementType)
     {
+        if (CurrentElementType == elementType) return;
+        
         if (playersManager.IsElementTypeFree(elementType))
         {
             print("Setting color");
@@ -100,7 +102,7 @@ public class PlayerController : MonoBehaviour
         }
         else
         {
-            //TODO: add vibrations
+            GameManager.Instance.HapticsManager.RublePlayer(0f, 0.2f, 0.15f, PlayerInput);
         }
     }
 
@@ -137,7 +139,7 @@ public class PlayerController : MonoBehaviour
             //Set default light to old tower
             // currentTower.SetTowerColor(ElementType.None);
                 
-            currentTower = GameManager.Instance.TowersManager.JumpTower(false, currentTower);
+            currentTower = GameManager.Instance.TowersManager.JumpTower( currentTower.InvertedSwitch, currentTower);
             //Set new tower color
             currentTower.SetTowerColor(CurrentElementType);
             MoveToTower(currentTower);
@@ -153,7 +155,7 @@ public class PlayerController : MonoBehaviour
         
         if (value.isPressed)
         {
-            currentTower = GameManager.Instance.TowersManager.JumpTower(true, currentTower);
+            currentTower = GameManager.Instance.TowersManager.JumpTower(!currentTower.InvertedSwitch, currentTower);
             //Set new tower color
             currentTower.SetTowerColor(CurrentElementType);
             MoveToTower(currentTower);
@@ -166,7 +168,7 @@ public class PlayerController : MonoBehaviour
             && CurrentPlayerState == PlayerState.Idle 
             && remainingBasicAttackCooldown <= 0)
         {
-            currentTower.CreateBullet(CurrentElementType, false);
+            currentTower.CreateBullet(CurrentElementType, false, PlayerInput);
             currentTower.LaunchBullet();
             remainingBasicAttackCooldown = basicAttackCooldown;
             CurrentPlayerState = PlayerState.Idle; // No need to change state
@@ -179,7 +181,7 @@ public class PlayerController : MonoBehaviour
               && CurrentPlayerState == PlayerState.Idle 
               && remainingSpecialAttackCooldown <= 0)
         {
-            currentTower.CreateBullet(CurrentElementType, true);
+            currentTower.CreateBullet(CurrentElementType, true, PlayerInput);
             currentTower.LaunchBullet();
             remainingSpecialAttackCooldown = specialAttackCooldown;
             CurrentPlayerState = PlayerState.Idle; // No need to change state
@@ -226,7 +228,7 @@ public class PlayerController : MonoBehaviour
             if (progress > 0.98f)
             {
                 progress = 1;
-                GameManager.Instance.HapticsManager.RublePlayer(0.3f, 0.3f, 0.2f, PlayerInput);
+                GameManager.Instance.HapticsManager.RublePlayer(0.2f, 0f, 0.15f, PlayerInput);
             }
             specialAttackIndicator.SetProgress(progress);
         }
