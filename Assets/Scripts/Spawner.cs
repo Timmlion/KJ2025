@@ -11,8 +11,8 @@ public class Spawner : MonoBehaviour
         {
             GameObject bubble = Instantiate(bubblePrefab, this.transform.position, Quaternion.identity);
             bubble.GetComponent<Bubble>().SetVulnerability(wave.type);
-            bubble.GetComponent<Bubble>().health = wave.health + 7 * waveLevel;
-            bubble.GetComponent<Bubble>().speed = wave.speed + .7f * waveLevel;
+            bubble.GetComponent<Bubble>().health = wave.health + 10 * waveLevel;
+            bubble.GetComponent<Bubble>().speed = wave.speed + 2f * waveLevel;
             bubble.transform.localScale = baseScale * CalculateScale(bubble.GetComponent<Bubble>().health = wave.health + 5 * GameManager.Instance.WavesManager.waveLevel);
         }
     }
