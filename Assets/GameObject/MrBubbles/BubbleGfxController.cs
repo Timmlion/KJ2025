@@ -1,6 +1,7 @@
 using System;
 using System.Linq;
 using DG.Tweening;
+using Unity.VisualScripting;
 using UnityEngine;
 
 [Serializable]
@@ -16,7 +17,8 @@ public class BubbleGfxController : MonoBehaviour
     [SerializeField] private SkinnedMeshRenderer meshRenderer;
     [SerializeField] private float damageShakeDuration = 0.5f;
     [SerializeField] private float damageShakeStrength = 1;
-
+    
+        
     public void SetColor(ElementType elementType)
     {
         var material = elementMaterialDict.FirstOrDefault(i => i.type == elementType)?.material;
@@ -24,7 +26,6 @@ public class BubbleGfxController : MonoBehaviour
         {
             Debug.LogWarning("ElementMaterialDict not found! Define it in elementMaterialDict");
         }
-        
         meshRenderer.material = material;
     }
 
