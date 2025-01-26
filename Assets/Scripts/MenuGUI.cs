@@ -1,3 +1,4 @@
+using DG.Tweening;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using TMPro;
@@ -60,6 +61,21 @@ public class MenuGUI : MonoBehaviour
 
     public void RestartGame() {
         GameManager.Instance.LevelsManager.RestartLevel();
+    }
+    
+    public void ShowWaveLabel(int waveNumber)
+    {
+        waveText.alpha = 0f;
+        waveText.text = $"Wave {waveNumber}";
+
+        waveText.DOFade(1f, 1f)
+            .OnComplete(() => 
+            {
+                DOVirtual.DelayedCall(3f, () =>
+                {
+                    waveText.DOFade(0f, 1f);
+                });
+            });
     }
 
 }
