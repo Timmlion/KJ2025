@@ -54,6 +54,7 @@ MonoBehaviour:
   LevelsManager: {fileID: 6345732636335647312}
   TowersManager: {fileID: 5230548606667526139}
   PlayersManager: {fileID: 2056092195018550302}
+  HapticsManager: {fileID: 5703095940331086486}
 --- !u!114 &5964695515655473454
 MonoBehaviour:
   m_ObjectHideFlags: 0

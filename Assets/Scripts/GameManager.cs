@@ -9,6 +9,7 @@ public class GameManager : MonoBehaviour
     public LevelsManager LevelsManager;
     public TowersManager TowersManager;
     public PlayersManager PlayersManager;
+    public HapticsManager HapticsManager;
 
     private void Awake()
     {
