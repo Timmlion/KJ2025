@@ -3860,26 +3860,6 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 6925544567004997613, guid: 95c63308e7aed2c44815a65aa9c53f68, type: 3}
-      propertyPath: m_VoxelSize
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 6925544567004997613, guid: 95c63308e7aed2c44815a65aa9c53f68, type: 3}
-      propertyPath: m_NavMeshData
-      value: 
-      objectReference: {fileID: 23800000, guid: cfb7bdf1e60f67a48a890b818fc40514, type: 2}
-    - target: {fileID: 6925544567004997613, guid: 95c63308e7aed2c44815a65aa9c53f68, type: 3}
-      propertyPath: m_MinRegionArea
-      value: 1.5
-      objectReference: {fileID: 0}
-    - target: {fileID: 6925544567004997613, guid: 95c63308e7aed2c44815a65aa9c53f68, type: 3}
-      propertyPath: m_BuildHeightMesh
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6925544567004997613, guid: 95c63308e7aed2c44815a65aa9c53f68, type: 3}
-      propertyPath: m_OverrideVoxelSize
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 7418316126869037263, guid: 95c63308e7aed2c44815a65aa9c53f68, type: 3}
       propertyPath: m_CastShadows
       value: 1
@@ -3955,7 +3935,10 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 8153626380718852870, guid: 95c63308e7aed2c44815a65aa9c53f68, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1903924486}
   m_SourcePrefab: {fileID: 100100000, guid: 95c63308e7aed2c44815a65aa9c53f68, type: 3}
 --- !u!1001 &1492433350
 PrefabInstance:
@@ -5367,6 +5350,43 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 507c5674772f341f3bd94997d015155f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!1 &1903924481 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 8153626380718852870, guid: 95c63308e7aed2c44815a65aa9c53f68, type: 3}
+  m_PrefabInstance: {fileID: 1479815390}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1903924486
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1903924481}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7a5ac11cc976e418e8d13136b07e1f52, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_SerializedVersion: 0
+  m_AgentTypeID: 0
+  m_CollectObjects: 0
+  m_Size: {x: 10, y: 10, z: 10}
+  m_Center: {x: 0, y: 2, z: 0}
+  m_LayerMask:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_UseGeometry: 1
+  m_DefaultArea: 0
+  m_GenerateLinks: 0
+  m_IgnoreNavMeshAgent: 1
+  m_IgnoreNavMeshObstacle: 1
+  m_OverrideTileSize: 0
+  m_TileSize: 256
+  m_OverrideVoxelSize: 0
+  m_VoxelSize: 0.16666667
+  m_MinRegionArea: 2
+  m_NavMeshData: {fileID: 23800000, guid: a3cedac223b53f8458028303e868c687, type: 2}
+  m_BuildHeightMesh: 0
 --- !u!1001 &1922097136
 PrefabInstance:
   m_ObjectHideFlags: 0
