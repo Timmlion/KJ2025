@@ -13,13 +13,13 @@ enum PlayerState
 public class PlayerController : MonoBehaviour
 {
     public ElementType CurrentElementType = ElementType.Blue;
+    public  PlayerInput PlayerInput;
 
     private TowerController currentTower;
     private TowerController targetTower;
     private Vector3 startPosition;
     private float elapsedTime;
     
-    private PlayerInput playerInput;
     [SerializeField] private PlayerGFXController playerGfx;
     [SerializeField] private float moveDuration = 0.2f;
     [SerializeField] private float basicAttackCooldown = 0.15f;
@@ -42,7 +42,7 @@ public class PlayerController : MonoBehaviour
 
     public void InitializePlayer(PlayerInput input)
     {
-        playerInput = input;
+        PlayerInput = input;
         orbLight.color = ElementColor(CurrentElementType);
         playersManager = GameManager.Instance.PlayersManager;
 
@@ -135,7 +135,7 @@ public class PlayerController : MonoBehaviour
         if (value.isPressed)
         {
             //Set default light to old tower
-            currentTower.SetTowerColor(ElementType.None);
+            // currentTower.SetTowerColor(ElementType.None);
                 
             currentTower = GameManager.Instance.TowersManager.JumpTower(false, currentTower);
             //Set new tower color
@@ -153,9 +153,6 @@ public class PlayerController : MonoBehaviour
         
         if (value.isPressed)
         {
-            //Set default light to old tower
-            currentTower.SetTowerColor(ElementType.None);
-            
             currentTower = GameManager.Instance.TowersManager.JumpTower(true, currentTower);
             //Set new tower color
             currentTower.SetTowerColor(CurrentElementType);
@@ -229,7 +226,7 @@ public class PlayerController : MonoBehaviour
             if (progress > 0.98f)
             {
                 progress = 1;
-                GameManager.Instance.HapticsManager.RublePlayer(0.3f, 0.3f, 0.2f, playerInput);
+                GameManager.Instance.HapticsManager.RublePlayer(0.3f, 0.3f, 0.2f, PlayerInput);
             }
             specialAttackIndicator.SetProgress(progress);
         }
@@ -238,15 +235,18 @@ public class PlayerController : MonoBehaviour
     public void SetCurrentTower(TowerController tower)
     {
         currentTower = tower;
-        print("Setting tower color");
-        currentTower.SetTowerColor(CurrentElementType);
     }
 
     public void SetElementType(ElementType elementType)
     {
         CurrentElementType = elementType;
-        currentTower.SetTowerColor(CurrentElementType);
         playerGfx.SetColor(elementType);
         specialAttackIndicator.SetColor(elementType);
+    }
+
+    public void Remove()
+    {
+        currentTower.Posessed = false;
+        Destroy(gameObject);
     }
 }

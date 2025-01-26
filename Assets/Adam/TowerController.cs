@@ -2,7 +2,6 @@ using UnityEngine;
 
 public class TowerController : MonoBehaviour
 {
-    [SerializeField] private Light pointlight;
     [SerializeField] private Light spotlight;
     [SerializeField] private BulletSpawner bulletSpawner;
     
@@ -13,7 +12,6 @@ public class TowerController : MonoBehaviour
     [SerializeField] private Color colorRed = Color.red;
     [SerializeField] private Color colorBlue = Color.blue;
     [SerializeField] private Color colorGreen = Color.green;
-    [SerializeField] private Color colorNone = Color.white;
 
     public bool Posessed
     {
@@ -52,7 +50,7 @@ public class TowerController : MonoBehaviour
     // Set the spotlight color based on the ElementType
     public void SetTowerColor(ElementType elementType)
     {
-        if (pointlight == null)
+        if (spotlight == null)
         {
             Debug.LogError("Spotlight is not assigned!");
             return;
@@ -61,19 +59,16 @@ public class TowerController : MonoBehaviour
         switch (elementType)
         {
             case ElementType.Yellow:
-                pointlight.color = colorYellow;
+                spotlight.color = colorYellow;
                 break;
             case ElementType.Red:
-                pointlight.color = colorRed;
+                spotlight.color = colorRed;
                 break;
             case ElementType.Blue:
-                pointlight.color = colorBlue;
+                spotlight.color = colorBlue;
                 break;
             case ElementType.Green:
-                pointlight.color = colorGreen;
-                break;
-            case ElementType.None:
-                pointlight.color = colorNone;
+                spotlight.color = colorGreen;
                 break;
         }
     }
