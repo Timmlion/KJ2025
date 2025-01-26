@@ -15,6 +15,7 @@ public class TowerController : MonoBehaviour
     [SerializeField] private Color colorRed = Color.red;
     [SerializeField] private Color colorBlue = Color.blue;
     [SerializeField] private Color colorGreen = Color.green;
+    [SerializeField] private Color colorWhite = Color.white;
 
     public bool Posessed
     {
@@ -59,21 +60,23 @@ public class TowerController : MonoBehaviour
             return;
         }
 
-        switch (elementType)
-        {
-            case ElementType.Yellow:
-                spotlight.color = colorYellow;
-                break;
-            case ElementType.Red:
-                spotlight.color = colorRed;
-                break;
-            case ElementType.Blue:
-                spotlight.color = colorBlue;
-                break;
-            case ElementType.Green:
-                spotlight.color = colorGreen;
-                break;
-        }
+        spotlight.color = colorWhite;
+
+        // switch (elementType)
+        // {
+        //     case ElementType.Yellow:
+        //         spotlight.color = colorYellow;
+        //         break;
+        //     case ElementType.Red:
+        //         spotlight.color = colorRed;
+        //         break;
+        //     case ElementType.Blue:
+        //         spotlight.color = colorBlue;
+        //         break;
+        //     case ElementType.Green:
+        //         spotlight.color = colorGreen;
+        //         break;
+        // }
     }
     
     public void CreateBullet(ElementType elementType, bool isSpecial, PlayerInput owner)

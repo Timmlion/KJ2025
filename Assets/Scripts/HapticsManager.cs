@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Security.Cryptography;
 using System.Security.Cryptography.X509Certificates;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.InputSystem.Utilities;
@@ -35,8 +36,25 @@ public class HapticsManager : MonoBehaviour
         gamepad.SetMotorSpeeds(0,0);
     }
 
+    private void StopAllRumble()
+    {
+        rumbleAllInProgress = false;
+        ReadOnlyArray<Gamepad> gamepads = Gamepad.all;
+        foreach (Gamepad gamepad in gamepads)
+        {
+            gamepad.SetMotorSpeeds(0, 0);
+        }
+    }
+
+    private void OnDestroy()
+    {
+        StopAllRumble();
+    }
+
     public void RublePlayer(float lowFrequency, float highfrequency, float duration, PlayerInput playerInput )
     {
+        
+        
         if (rumbleAllInProgress) return;
         
         Gamepad gamepad = playerInput.devices[0] as Gamepad;

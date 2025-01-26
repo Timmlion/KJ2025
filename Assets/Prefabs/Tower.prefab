@@ -47,7 +47,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 507c5674772f341f3bd94997d015155f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  pointlight: {fileID: 0}
+  InvertedSwitch: 0
   spotlight: {fileID: 6272112626869142965}
   bulletSpawner: {fileID: 4490876273189881662}
   colorYellow: {r: 1, g: 0.92156863, b: 0.015686275, a: 1}
@@ -98,10 +98,10 @@ Light:
   serializedVersion: 11
   m_Type: 0
   m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_Intensity: 30
-  m_Range: 10
-  m_SpotAngle: 94.25641
-  m_InnerSpotAngle: 65.40465
+  m_Intensity: 50
+  m_Range: 20
+  m_SpotAngle: 37.2
+  m_InnerSpotAngle: 37.2
   m_CookieSize: 10
   m_Shadows:
     m_Type: 0

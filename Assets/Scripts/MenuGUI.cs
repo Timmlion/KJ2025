@@ -66,7 +66,7 @@ public class MenuGUI : MonoBehaviour
     public void ShowWaveLabel(int waveNumber)
     {
         waveText.alpha = 0f;
-        waveText.text = $"Wave {waveNumber}";
+        waveText.text = $"Wave {waveNumber + 1}";
 
         waveText.DOFade(1f, 1f)
             .OnComplete(() => 
