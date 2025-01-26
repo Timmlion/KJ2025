@@ -147,6 +147,7 @@ public class Bubble : MonoBehaviour
 
     private void Die()
     {
+        GetComponent<Collider>().enabled=false;
         takeDamageSequence?.Kill();
         navMeshAgent.isStopped = true;
         animator.SetTrigger("Die");
