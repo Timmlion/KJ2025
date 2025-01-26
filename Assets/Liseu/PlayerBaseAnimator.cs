@@ -1,3 +1,4 @@
+using System.Security.Cryptography;
 using DG.Tweening;
 using UnityEngine;
 
@@ -25,6 +26,7 @@ public class PlayerBaseAnimator : MonoBehaviour
     private void PlayParticleEffect()
     {
         Camera.main.GetComponent<CameraShake>().TriggerShake(2f, 1.5f);
+        GameManager.Instance.GetComponent<HapticsManager>().RumbleAll(1f,1f,2);
         _particleEffectGameObject.SetActive(true);
     }
 }
