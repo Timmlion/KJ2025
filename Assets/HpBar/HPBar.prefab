@@ -172,6 +172,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   healthBarImage: {fileID: 5561310266338685722}
   gfxAnchor: {fileID: 881153294154231905}
+  _shakeScaleDuration: 0.1
+  _shakeScaleStrength: 20
 --- !u!1 &5828599775730820641
 GameObject:
   m_ObjectHideFlags: 0
