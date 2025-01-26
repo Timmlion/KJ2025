@@ -5,20 +5,7 @@ public class Spawner : MonoBehaviour
     public GameObject bubblePrefab;
     public Vector3 baseScale = new Vector3(1f, 1f, 1f);
 
-    void Start()
-    {
-    }
-
-    void Update()
-    {
-    }
-
-    public void spawnBubble() {
-        Instantiate(bubblePrefab, this.transform.position, Quaternion.identity);
-        Debug.Log("reee");
-    }
-
-    public void spawnBubble(Wave wave, int waveLevel) {
+    public void spawnEnemies(Wave wave, int waveLevel) {
         int waveGrowth = wave.amount + (int)waveLevel/3;
         for (int i = 0; i < wave.amount; i++)
         {

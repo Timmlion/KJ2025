@@ -47,7 +47,7 @@ public class WavesManager : MonoBehaviour
         foreach (GameObject spawner in GameManager.Instance.LevelsManager.spawnerList)
         {
             if (currentWave >= wavesList.Count) {currentWave = 0;}
-            spawner.GetComponent<Spawner>().spawnBubble(waveList[currentWave], waveLevel);
+            spawner.GetComponent<Spawner>().spawnEnemies(waveList[currentWave], waveLevel);
             yield return new WaitForSeconds(1f);  
             currentWave++;
         }
