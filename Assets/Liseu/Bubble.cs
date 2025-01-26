@@ -110,9 +110,9 @@ public class Bubble : MonoBehaviour
 
     public void TakeDamage(BulletData bulletData)
     {
-        int damageTaken = damage;
+        int damageTaken = bulletData.Damage;
         if (bulletData.ElementType == vulnerability) { damageTaken*=3;}
-        
+        if(bulletData.IsSpecial) {damageTaken*=3;}
         health -= damageTaken;
         currentHealth = health;
         hpBar.UpdateHealthBar(currentHealth/startingHealth);
@@ -166,9 +166,6 @@ public class Bubble : MonoBehaviour
             Explosion explosion = other.GetComponent<Explosion>();
             if (explosion.BulletData.IsSpecial) // dont get dmg from basic bullet explosion
             {
-                damage = explosion.BulletData.Damage;
-                Debug.Log($"Bubble took a hit from explosion! ({damage} dmg)");
-
                 TakeDamage(explosion.BulletData);
             }
         }
@@ -176,9 +173,6 @@ public class Bubble : MonoBehaviour
         if (other.GetComponent<Bullet>() != null && !other.GetComponent<Bullet>().BulletData.IsSpecial)
         {
             Bullet bullet = other.GetComponent<Bullet>();
-            damage = bullet.BulletData.Damage;
-            Debug.Log($"Bubble took a hit from bullet! ({damage} dmg)");
-            
             TakeDamage(bullet.BulletData);
         }
     }
