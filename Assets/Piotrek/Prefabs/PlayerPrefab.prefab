@@ -51,7 +51,7 @@ MonoBehaviour:
   playerGfx: {fileID: 6433615486321266327}
   moveDuration: 0.2
   basicAttackCooldown: 0.15
-  specialAttackCooldown: 0.3
+  specialAttackCooldown: 3
   orbLight: {fileID: 290991016147983180}
   colorYellow: {r: 1, g: 0.4287996, b: 0.18431371, a: 1}
   colorRed: {r: 0.8679245, g: 0.061409745, b: 0.061409745, a: 1}

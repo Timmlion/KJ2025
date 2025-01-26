@@ -23,7 +23,7 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private PlayerGFXController playerGfx;
     [SerializeField] private float moveDuration = 0.2f;
     [SerializeField] private float basicAttackCooldown = 0.15f;
-    [SerializeField] private float specialAttackCooldown = 0.3f;
+    [SerializeField] private float specialAttackCooldown = 3f;
     private Vector2 moveInput;
     private PlayerState CurrentPlayerState = PlayerState.Idle;
     [SerializeField] private Light orbLight;
