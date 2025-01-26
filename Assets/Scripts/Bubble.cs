@@ -23,7 +23,7 @@ public class Bubble : MonoBehaviour
     public float isPoisonedFor;
 
     [Header("Pathfinding")]
-    private NavMeshAgent navMeshAgent;
+    public NavMeshAgent navMeshAgent;
     private float currentSpeed; 
     private float slowedSpeed ; 
     

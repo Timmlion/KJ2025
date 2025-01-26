@@ -12,17 +12,28 @@ public class Spawner : MonoBehaviour
             GameObject bubble = Instantiate(bubblePrefab, this.transform.position, Quaternion.identity);
             bubble.GetComponent<Bubble>().SetVulnerability(wave.type);
             bubble.GetComponent<Bubble>().health = wave.health + 10 * waveLevel;
-            bubble.GetComponent<Bubble>().speed = wave.speed + 2f * waveLevel;
+            bubble.GetComponent<Bubble>().navMeshAgent.speed = wave.speed + 2f * waveLevel;
             bubble.transform.localScale = baseScale * CalculateScale(bubble.GetComponent<Bubble>().health = wave.health + 5 * GameManager.Instance.WavesManager.waveLevel);
         }
     }
+
+    public void SpawnChungus(Wave wave, int waveLevel) {
+        Debug.Log("Spawning chungus");
+        GameObject bubble = Instantiate(bubblePrefab, this.transform.position, Quaternion.identity);
+            bubble.GetComponent<Bubble>().SetVulnerability(wave.type);
+            bubble.GetComponent<Bubble>().health = wave.health *10 + 10 * waveLevel;
+            bubble.GetComponent<Bubble>().navMeshAgent.speed  += 2f * waveLevel;
+            bubble.name = "BigChungus";
+            bubble.transform.localScale = baseScale * CalculateScale(bubble.GetComponent<Bubble>().health = wave.health + 5 * GameManager.Instance.WavesManager.waveLevel);
+    }
+        
 
     private float CalculateScale(float health)
     {
         float scaleAt30HP = 0.9f;
         float scaleAt90HP = 1.3f;
         float scaleAt270HP = 2.2f;
-        float scaleAt1200HP = 5.5f;
+        float scaleAt1200HP = 10f;
 
         // Handle health ranges
         if (health <= 30f)

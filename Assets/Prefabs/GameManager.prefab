@@ -68,8 +68,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   waveLevel: 0
-  waveCooldown: 20
+  waveCooldown: 18
   currentWave: 0
+  spawnerList: []
 --- !u!114 &6345732636335647312
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -9,6 +9,9 @@ public class WavesManager : MonoBehaviour
     public int currentWave = 0;
     float cooldownTimer;
 
+    public List<GameObject> spawnerList;
+    
+
     public List<Wave> wavesList =  new List<Wave>
         {
             new Wave(4, ElementType.Yellow, 0.5f, 80),
@@ -25,6 +28,7 @@ public class WavesManager : MonoBehaviour
     void Start()
     {
         cooldownTimer = 1;
+        spawnerList = GameManager.Instance.LevelsManager.spawnerList;
     }
 
     // Update is called once per frame
@@ -46,6 +50,12 @@ public class WavesManager : MonoBehaviour
     }
 
     IEnumerator SpawnWave(List<Wave> waveList) {
+        if (waveLevel % 2 == 0)
+        {
+            GameObject spawner = spawnerList[Random.Range(0, spawnerList.Count)];
+            Spawner randomSpawner = spawner.GetComponent<Spawner>();
+            randomSpawner.SpawnChungus(waveList[currentWave], waveLevel);
+        }
         foreach (GameObject spawner in GameManager.Instance.LevelsManager.spawnerList)
         {
             if (currentWave >= wavesList.Count) {currentWave = 0;}
@@ -54,4 +64,5 @@ public class WavesManager : MonoBehaviour
             currentWave++;
         }
     }
+
 }
