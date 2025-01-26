@@ -15,6 +15,7 @@ GameObject:
   - component: {fileID: 5230548606667526139}
   - component: {fileID: 2056092195018550302}
   - component: {fileID: 6062841125836711273}
+  - component: {fileID: 5703095940331086486}
   m_Layer: 0
   m_Name: GameManager
   m_TagString: Untagged
@@ -126,7 +127,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a30939d02028d66488101f0b95f16606, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  AllowSameColorPlayers: 1
+  AllowSameColorPlayers: 0
   players: []
 --- !u!114 &6062841125836711273
 MonoBehaviour:
@@ -172,3 +173,15 @@ MonoBehaviour:
     y: 0
     width: 1
     height: 1
+--- !u!114 &5703095940331086486
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5809512615335044527}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9e16cb2b0c3b9411c87f0dbe14c35dff, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
