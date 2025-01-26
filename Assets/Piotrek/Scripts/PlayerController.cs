@@ -44,10 +44,6 @@ public class PlayerController : MonoBehaviour
         orbLight.color = ElementColor(CurrentElementType);
         playersManager = GameManager.Instance.PlayersManager;
 
-        // VIBRATION TEST FIELD - FAILED FOR NOW
-        //Gamepad gamepad = playerInput.devices[0] as Gamepad;
-        //print("bruuum");
-        //gamepad.SetMotorSpeeds(1,1);
     }
 
     public void OnLook(InputValue value)
