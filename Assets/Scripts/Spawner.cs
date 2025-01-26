@@ -13,7 +13,7 @@ public class Spawner : MonoBehaviour
             bubble.GetComponent<Bubble>().SetVulnerability(wave.type);
             bubble.GetComponent<Bubble>().health = wave.health + 10 * waveLevel;
             bubble.GetComponent<Bubble>().navMeshAgent.speed = wave.speed + .4f * waveLevel;
-            bubble.transform.localScale = baseScale * CalculateScale(bubble.GetComponent<Bubble>().health = wave.health + 5 * GameManager.Instance.WavesManager.waveLevel);
+            bubble.transform.localScale = baseScale * CalculateScale(bubble.GetComponent<Bubble>().health + 5 * GameManager.Instance.WavesManager.waveLevel);
         }
     }
 
@@ -21,7 +21,7 @@ public class Spawner : MonoBehaviour
         Debug.Log("Spawning chungus");
         GameObject bubble = Instantiate(bubblePrefab, this.transform.position, Quaternion.identity);
             bubble.GetComponent<Bubble>().SetVulnerability(wave.type);
-            bubble.GetComponent<Bubble>().health = wave.health *10 + 10 * waveLevel;
+            bubble.GetComponent<Bubble>().health = wave.health * 10 + 10 * waveLevel;
             bubble.GetComponent<Bubble>().navMeshAgent.speed  += .4f * waveLevel;
             bubble.name = "BigChungus";
             bubble.transform.localScale = baseScale * CalculateScale(bubble.GetComponent<Bubble>().health = wave.health + 5 * GameManager.Instance.WavesManager.waveLevel);
