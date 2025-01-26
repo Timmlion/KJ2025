@@ -40,7 +40,7 @@ Light:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1613125452884503872}
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 11
   m_Type: 2
   m_Color: {r: 1, g: 0.033018887, b: 0.033018887, a: 1}
@@ -204,7 +204,6 @@ MonoBehaviour:
   isBleedingFor: 0
   isPoisonedFor: 0
   _bubbleGfxController: {fileID: 6942789948584561322}
-  light: {fileID: 3262148937289771945}
   animator: {fileID: 8624111522465122285}
 --- !u!195 &2812747156129017734
 NavMeshAgent:

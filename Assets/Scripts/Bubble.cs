@@ -29,7 +29,7 @@ public class Bubble : MonoBehaviour
     
     [Header("References")]
     [SerializeField] private BubbleGfxController _bubbleGfxController;
-    [SerializeField] private Light light;
+
     [SerializeField] private Animator animator;
     private Sequence takeDamageSequence;
 
@@ -188,25 +188,5 @@ public class Bubble : MonoBehaviour
     {
         vulnerability = elementType;
         _bubbleGfxController.SetColor(elementType);
-        SetLightColor(elementType);
-    }
-    
-    private void SetLightColor(ElementType elementType)
-    {
-        switch (elementType)
-        {
-            case ElementType.Red:
-                light.color = Color.red;
-                break;
-            case ElementType.Blue:
-                light.color = Color.blue;
-                break;
-            case ElementType.Green:
-                light.color = Color.green;
-                break;
-            case ElementType.Yellow:
-                light.color = Color.yellow;
-                break;
-        }
     }
 }
