@@ -45,13 +45,19 @@ public class WavesManager : MonoBehaviour
                 StartCoroutine(SpawnWave(wavesList));
                 cooldownTimer = waveCooldown; // Reset the cooldown timer
             }
+            
+            if (Input.GetKeyDown(KeyCode.Alpha6)) 
+            {
+                PlayerPrefs.SetInt("lastWave", 0);
+            }
 
             if (Input.GetKeyDown(KeyCode.Comma)) {StartCoroutine(SpawnWave(wavesList));}
     }
 
     IEnumerator SpawnWave(List<Wave> waveList) {
-        GameManager.Instance.LevelsManager.ShowWaveLabel(waveLevel);
         waveLevel++; // Move to the next wave
+        GameManager.Instance.LevelsManager.ShowWaveLabel(waveLevel);
+        PlayerPrefs.SetInt("lastWave", waveLevel);
         if (waveLevel % 2 == 0)
         {
             GameObject spawner = spawnerList[Random.Range(0, spawnerList.Count)];
