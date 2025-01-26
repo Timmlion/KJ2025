@@ -21,12 +21,12 @@ public class PlayerBaseAnimator : MonoBehaviour
         sequence.AppendCallback(PlayParticleEffect);
         sequence.AppendInterval(DieAnimationLength * 0.02f);
         sequence.Play();
+        GameManager.Instance.HapticsManager.RumbleAll(1f,1f,2);
     }
 
     private void PlayParticleEffect()
     {
         Camera.main.GetComponent<CameraShake>().TriggerShake(2f, 1.5f);
-        GameManager.Instance.HapticsManager.RumbleAll(1f,1f,2);
         _particleEffectGameObject.SetActive(true);
     }
 }

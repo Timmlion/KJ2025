@@ -8,18 +8,24 @@ using UnityEngine.InputSystem.Utilities;
 
 public class HapticsManager : MonoBehaviour
 {
+    public bool rumbleAllInProgress = false;
+    
     public void RumbleAll(float lowFrequency, float highfrequency, float duration)
     {
+        rumbleAllInProgress = true;
         ReadOnlyArray<Gamepad> gamepads = Gamepad.all;
         foreach (Gamepad gamepad in gamepads)
         {
             gamepad.SetMotorSpeeds(lowFrequency, highfrequency);
-            StartCoroutine(StopRumble(duration, gamepad));
+            StartCoroutine(StopRumble(duration, gamepad, true));
         }
     }
 
-    private IEnumerator StopRumble(float duration, Gamepad gamepad)
+    private IEnumerator StopRumble(float duration, Gamepad gamepad, bool rumbleAll = false)
     {
+        if (rumbleAllInProgress != rumbleAll) yield return null;
+        if (rumbleAllInProgress) rumbleAllInProgress = false;
+        
         float elapsedTime = 0f;
         while (elapsedTime < duration)
         {
@@ -31,6 +37,8 @@ public class HapticsManager : MonoBehaviour
 
     public void RublePlayer(float lowFrequency, float highfrequency, float duration, PlayerInput playerInput )
     {
+        if (rumbleAllInProgress) return;
+        
         Gamepad gamepad = playerInput.devices[0] as Gamepad;
         gamepad.SetMotorSpeeds(1,1);
         StartCoroutine(StopRumble(duration, gamepad));
