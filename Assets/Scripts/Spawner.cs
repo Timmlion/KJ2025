@@ -11,8 +11,8 @@ public class Spawner : MonoBehaviour
         {
             GameObject bubble = Instantiate(bubblePrefab, this.transform.position, Quaternion.identity);
             bubble.GetComponent<Bubble>().SetVulnerability(wave.type);
-            bubble.GetComponent<Bubble>().health = wave.health + 5 * waveLevel;
-            bubble.GetComponent<Bubble>().speed = wave.speed + .2f * waveLevel;
+            bubble.GetComponent<Bubble>().health = wave.health + 7 * waveLevel;
+            bubble.GetComponent<Bubble>().speed = wave.speed + .7f * waveLevel;
             bubble.transform.localScale = baseScale * CalculateScale(bubble.GetComponent<Bubble>().health = wave.health + 5 * GameManager.Instance.WavesManager.waveLevel);
         }
     }
@@ -27,27 +27,22 @@ public class Spawner : MonoBehaviour
         // Handle health ranges
         if (health <= 30f)
         {
-            // Below or equal to 30 HP, return the minimum scale
             return scaleAt30HP;
         }
         else if (health <= 90f)
         {
-            // Scale between 30 HP and 90 HP
             return Mathf.Lerp(scaleAt30HP, scaleAt90HP, (health - 30f) / (90f - 30f));
         }
         else if (health <= 270f)
         {
-            // Scale between 90 HP and 270 HP
             return Mathf.Lerp(scaleAt90HP, scaleAt270HP, (health - 90f) / (270f - 90f));
         }
         else if (health <= 1200f)
         {
-            // Scale between 270 HP and 1200 HP
             return Mathf.Lerp(scaleAt270HP, scaleAt1200HP, (health - 270f) / (1200f - 270f));
         }
         else
         {
-            // Above 1200 HP, return the maximum scale
             return scaleAt1200HP;
         }
     }
