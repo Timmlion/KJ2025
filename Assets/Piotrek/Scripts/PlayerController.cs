@@ -21,12 +21,14 @@ public class PlayerController : MonoBehaviour
     
     private PlayerInput playerInput;
     [SerializeField] private PlayerGFXController playerGfx;
-    [SerializeField] private float moveDuration = 0.1f;
-    [SerializeField] private float basicAttackCooldown = 0.2f;
+    [SerializeField] private float moveDuration = 0.2f;
+    [SerializeField] private float basicAttackCooldown = 0.15f;
+    [SerializeField] private float specialAttackCooldown = 3f;
     private Vector2 moveInput;
     private PlayerState CurrentPlayerState = PlayerState.Idle;
     [SerializeField] private Light orbLight;
     private float remainingBasicAttackCooldown = 0;
+    private float remainingSpecialAttackCooldown = 0;
     
     [SerializeField] private Color colorYellow = Color.yellow;
     [SerializeField] private Color colorRed = Color.red;
@@ -173,15 +175,14 @@ public class PlayerController : MonoBehaviour
     
     private void OnSpecialAttack(InputValue value)
     {
-        if (value.Get<float>() > 0.6f && CurrentPlayerState == PlayerState.Idle)
+        if (value.Get<float>() > 0.6f 
+              && CurrentPlayerState == PlayerState.Idle 
+              && remainingSpecialAttackCooldown <= 0)
         {
             currentTower.CreateBullet(CurrentElementType, true);
-            CurrentPlayerState = PlayerState.ShootingSpecial;
-        }
-        else if (value.Get<float>() < 0.3f && CurrentPlayerState == PlayerState.ShootingSpecial)
-        {
             currentTower.LaunchBullet();
-            CurrentPlayerState = PlayerState.Idle;
+            remainingSpecialAttackCooldown = specialAttackCooldown;
+            CurrentPlayerState = PlayerState.Idle; // No need to change state
         }
     }
 
@@ -215,6 +216,11 @@ public class PlayerController : MonoBehaviour
         if (remainingBasicAttackCooldown > 0)
         {
             remainingBasicAttackCooldown -= Time.deltaTime;
+        }        
+        
+        if (remainingSpecialAttackCooldown > 0)
+        {
+            remainingSpecialAttackCooldown -= Time.deltaTime;
         }
     }
 

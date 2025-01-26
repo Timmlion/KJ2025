@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
 using UnityEngine.InputSystem;
-using UnityEngine.Serialization;
 using Random = UnityEngine.Random;
 
 public class PlayersManager : MonoBehaviour
@@ -18,10 +17,7 @@ public class PlayersManager : MonoBehaviour
     private void OnPlayerJoined(PlayerInput playerInput)
     {
         Debug.Log($"Player {playerInput.playerIndex} joined the game.");
-
-        // // Optionally, assign a unique spawn point or set up the player
-        // Vector3 spawnPosition = new Vector3(playerInput.playerIndex * 2f, 0, 0);
-        // playerInput.gameObject.transform.position = spawnPosition;
+        
         var playerController = playerInput.gameObject.GetComponent<PlayerController>();
         players.Add(playerController);
 

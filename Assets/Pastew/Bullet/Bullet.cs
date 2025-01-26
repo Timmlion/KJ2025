@@ -37,11 +37,7 @@ public class Bullet : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if(other.CompareTag("Ground") && BulletData.IsSpecial)
-        {
-            Explode();
-        }
-        if(other.CompareTag("Ground") && !BulletData.IsSpecial || other.CompareTag("Enemy") && !BulletData.IsSpecial)
+        if(other.CompareTag("Ground") || other.CompareTag("Enemy"))
         {
             Explode();
         }
@@ -51,6 +47,12 @@ public class Bullet : MonoBehaviour
     {
         FreezeRigidbody();
         var explosion = Instantiate(explosionPrefab, transform.position, Quaternion.identity).GetComponent<Explosion>();
+        
+        // Set on the floor
+        var transformPosition = explosion.transform.position;
+        transformPosition.y = 0.1f;
+        explosion.transform.position = transformPosition;
+        
         explosion.PlayAnimation(BulletData);
         Destroy(gameObject, 1.5f);
     }

@@ -13,7 +13,10 @@ public class TowersManager : MonoBehaviour
         if (freeTowers.Count > 0)
         {
             int randomIndex = Random.Range(0, freeTowers.Count);
-            return freeTowers[randomIndex];
+            var freeTower = freeTowers[randomIndex];
+            freeTower.Posessed = true;
+            
+            return freeTower;
         }
 
         // If no free towers are available, return null
@@ -57,18 +60,5 @@ public class TowersManager : MonoBehaviour
         // If no free tower is found, return null
         return null;
     }
-    
-    
-    
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
-    {
-        
-    }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
 }
