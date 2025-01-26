@@ -14,16 +14,15 @@ public class HPBar : MonoBehaviour
         UpdateHealthBar(1);
     }
 
-    private void Update()
-    {
-        if (Input.GetKeyUp(KeyCode.K))
-            UpdateHealthBar(0.4f);
-    }
+    // private void Update()
+    // {
+    //     if (Input.GetKeyUp(KeyCode.K))
+    //         UpdateHealthBar(0.4f);
+    // }
 
     public void UpdateHealthBar(float value)
     {
-        gfxAnchor.gameObject.SetActive(value < 0.95f);
-        gfxAnchor.gameObject.SetActive(true);
+        gfxAnchor.gameObject.SetActive(value is < 0.95f and > 0);
 
         if (healthBarImage != null)
         {
