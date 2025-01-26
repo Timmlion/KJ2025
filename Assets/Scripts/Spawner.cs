@@ -11,7 +11,7 @@ public class Spawner : MonoBehaviour
         {
             Bubble bubble = Instantiate(bubblePrefab, this.transform.position, Quaternion.identity).GetComponent<Bubble>();
             bubble.SetVulnerability(wave.type);
-            bubble.health = wave.health + 10 * waveLevel;
+            bubble.health = wave.health + 20 * waveLevel;
             bubble.navMeshAgent.speed = wave.speed + .4f * waveLevel;
             bubble.transform.localScale = baseScale * CalculateScale(bubble.health);
         }
@@ -21,9 +21,10 @@ public class Spawner : MonoBehaviour
         Debug.Log("Spawning chungus");
         Bubble bubble = Instantiate(bubblePrefab, this.transform.position, Quaternion.identity).GetComponent<Bubble>();
         bubble.SetVulnerability(wave.type);
-        bubble.health = wave.health * 10 + 10 * waveLevel;
+        bubble.health = wave.health * 10 + 20 * waveLevel;
         bubble.navMeshAgent.speed  += .4f * waveLevel;
         bubble.name = "BigChungus";
+        bubble.damage = 1000;
         bubble.transform.localScale = baseScale * CalculateScale(bubble.health);
     }
         
@@ -33,7 +34,7 @@ public class Spawner : MonoBehaviour
         float scaleAt30HP = 0.9f;
         float scaleAt90HP = 1.3f;
         float scaleAt270HP = 2.2f;
-        float scaleAt1200HP = 10f;
+        float scaleAt1200HP = 9f;
 
         // Handle health ranges
         if (health <= 30f)
