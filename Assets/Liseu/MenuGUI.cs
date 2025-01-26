@@ -15,7 +15,7 @@ public class MenuGUI : MonoBehaviour
 
     void Update()
     {
-        if (Time.timeScale == 0f)
+        if (startScreen.activeSelf)
             { 
                 var gamepad = Gamepad.current;
                 if (gamepad == null)
@@ -24,6 +24,19 @@ public class MenuGUI : MonoBehaviour
                 if (gamepad.rightTrigger.wasPressedThisFrame)
                 {
                     StartGame();
+                }
+
+            }
+
+        if (endgameScreen.activeSelf)
+            { 
+                var gamepad = Gamepad.current;
+                if (gamepad == null)
+                    return; // No gamepad connected.
+
+                if (gamepad.rightTrigger.wasPressedThisFrame)
+                {
+                    RestartGame();
                 }
 
             }
