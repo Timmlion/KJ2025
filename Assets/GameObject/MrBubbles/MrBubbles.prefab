@@ -119,7 +119,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2453185005043244411, guid: 583e6ab09dd5db1439e0ee7bcda10c28, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 1
+      value: 1.132
       objectReference: {fileID: 0}
     - target: {fileID: 2453185005043244411, guid: 583e6ab09dd5db1439e0ee7bcda10c28, type: 3}
       propertyPath: m_LocalPosition.z
@@ -153,17 +153,13 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 2781081990676108148, guid: 583e6ab09dd5db1439e0ee7bcda10c28, type: 3}
-      propertyPath: m_SizeDelta.x
-      value: 900
-      objectReference: {fileID: 0}
-    - target: {fileID: 2781081990676108148, guid: 583e6ab09dd5db1439e0ee7bcda10c28, type: 3}
-      propertyPath: m_SizeDelta.y
-      value: 160
-      objectReference: {fileID: 0}
     - target: {fileID: 2781734693614845120, guid: 583e6ab09dd5db1439e0ee7bcda10c28, type: 3}
       propertyPath: m_Name
       value: HPBar
+      objectReference: {fileID: 0}
+    - target: {fileID: 2781734693614845120, guid: 583e6ab09dd5db1439e0ee7bcda10c28, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

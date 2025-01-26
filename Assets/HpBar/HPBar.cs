@@ -4,6 +4,7 @@ using UnityEngine.UI;
 public class HPBar : MonoBehaviour
 {
     public Image healthBarImage; 
+    public GameObject gfxAnchor; 
 
     void Start()
     {
@@ -12,7 +13,9 @@ public class HPBar : MonoBehaviour
 
     public void UpdateHealthBar(float value)
     {
-        healthBarImage.gameObject.SetActive(value < 0.9f);
+        // gfxAnchor.gameObject.SetActive(value < 0.95f);
+        gfxAnchor.gameObject.SetActive(true);
+        
         if (healthBarImage != null)
         {
             healthBarImage.fillAmount = value;
