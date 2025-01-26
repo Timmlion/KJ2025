@@ -68,7 +68,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   waveLevel: 0
-  waveCooldown: 25
+  waveCooldown: 20
   currentWave: 0
 --- !u!114 &6345732636335647312
 MonoBehaviour:
