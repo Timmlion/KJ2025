@@ -37,6 +37,10 @@ public class LevelsManager : MonoBehaviour
     }
 
     void GameOver() {
+        Invoke(nameof(ShowEndScreen), 4);
+    }
+
+    public void ShowEndScreen(){
         Time.timeScale = 0f;
         MenuGUI.endgameScreen.SetActive(true);
     }
@@ -45,5 +49,4 @@ public class LevelsManager : MonoBehaviour
     {
         MenuGUI.ShowWaveLabel(waveNumber);
     }
-    
 }
