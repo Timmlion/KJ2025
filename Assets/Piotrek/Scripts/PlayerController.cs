@@ -229,7 +229,7 @@ public class PlayerController : MonoBehaviour
             if (progress > 0.98f)
             {
                 progress = 1;
-                // TODO: invoke light, short vibration here
+                GameManager.Instance.HapticsManager.RublePlayer(0.3f, 0.3f, 0.2f, playerInput);
             }
             specialAttackIndicator.SetProgress(progress);
         }
