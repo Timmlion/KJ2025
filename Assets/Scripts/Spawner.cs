@@ -24,6 +24,7 @@ public class Spawner : MonoBehaviour
         bubble.health = wave.health * 10 + 20 * waveLevel;
         bubble.navMeshAgent.speed  += .4f * waveLevel;
         bubble.name = "BigChungus";
+        bubble.damage = 1000;
         bubble.transform.localScale = baseScale * CalculateScale(bubble.health);
     }
         
