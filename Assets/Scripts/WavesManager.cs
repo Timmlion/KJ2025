@@ -58,6 +58,13 @@ public class WavesManager : MonoBehaviour
         waveLevel++; // Move to the next wave
         GameManager.Instance.LevelsManager.ShowWaveLabel(waveLevel);
         PlayerPrefs.SetInt("lastWave", waveLevel);
+        
+        var topWave = PlayerPrefs.GetInt("topWave", waveLevel);
+        if (waveLevel > topWave)
+        {
+            PlayerPrefs.SetInt("topWave", waveLevel);
+        }
+        
         if (waveLevel % 2 == 0)
         {
             GameObject spawner = spawnerList[Random.Range(0, spawnerList.Count)];
