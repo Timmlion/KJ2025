@@ -2,15 +2,16 @@ using UnityEngine;
 
 public class LookAtCamera : MonoBehaviour
 {
-    private Camera _camera;
+    private Camera mainCamera;
 
-    private void Awake()
+    void Start()
     {
-        _camera = Camera.main;
+        mainCamera = Camera.main; // Cache the main camera
     }
 
-    void Update()
+    void LateUpdate()
     {
-        if (_camera) transform.LookAt(_camera.transform);
+        // Make the health bar face the camera
+        transform.forward = -mainCamera.transform.forward;
     }
 }

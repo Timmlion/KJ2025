@@ -1,6 +1,8 @@
 using UnityEngine;
 using System.Collections;
 using System.Collections.Generic;
+using DG.Tweening;
+using TMPro;
 using UnityEngine.SceneManagement;
 
 public class LevelsManager : MonoBehaviour
@@ -10,10 +12,12 @@ public class LevelsManager : MonoBehaviour
     public List<GameObject> spawnerList = new List<GameObject>();
 
     public GameObject GUIMenu;
+    private MenuGUI MenuGUI;
 
     void Start()
     {
         Time.timeScale = 0f;
+        MenuGUI = GUIMenu.GetComponent<MenuGUI>();
     }
 
 
@@ -34,8 +38,12 @@ public class LevelsManager : MonoBehaviour
 
     void GameOver() {
         Time.timeScale = 0f;
-        GUIMenu.GetComponent<MenuGUI>().endgameScreen.SetActive(true);
+        MenuGUI.endgameScreen.SetActive(true);
     }
 
+    public void ShowWaveLabel(int waveNumber)
+    {
+        MenuGUI.ShowWaveLabel(waveNumber);
+    }
     
 }

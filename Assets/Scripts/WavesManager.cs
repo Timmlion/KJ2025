@@ -37,8 +37,10 @@ public class WavesManager : MonoBehaviour
             if (cooldownTimer <= 0f)
             {
                 if (currentWave >= wavesList.Count) {currentWave = 0;}
+
                 StartCoroutine(SpawnWave(wavesList));
                 waveLevel++; // Move to the next wave
+                GameManager.Instance.LevelsManager.ShowWaveLabel(waveLevel);
                 cooldownTimer = waveCooldown; // Reset the cooldown timer
             }
     }

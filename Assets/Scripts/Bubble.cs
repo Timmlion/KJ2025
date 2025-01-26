@@ -106,8 +106,6 @@ public class Bubble : MonoBehaviour
         isSlowedFor -= Time.deltaTime;
     }
 
-
-
     public void TakeDamage(BulletData bulletData)
     {
         int damageTaken = bulletData.Damage;
