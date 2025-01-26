@@ -27,6 +27,8 @@ public class PlayerController : MonoBehaviour
     private Vector2 moveInput;
     private PlayerState CurrentPlayerState = PlayerState.Idle;
     [SerializeField] private Light orbLight;
+    
+    [SerializeField] private SpecialAttackIndicator specialAttackIndicator;
     private float remainingBasicAttackCooldown = 0;
     private float remainingSpecialAttackCooldown = 0;
     
@@ -94,6 +96,7 @@ public class PlayerController : MonoBehaviour
             CurrentElementType = elementType;
             currentTower.SetTowerColor(CurrentElementType);
             playerGfx.SetColor(CurrentElementType);
+            specialAttackIndicator.SetColor(CurrentElementType);
         }
         else
         {
@@ -221,6 +224,14 @@ public class PlayerController : MonoBehaviour
         if (remainingSpecialAttackCooldown > 0)
         {
             remainingSpecialAttackCooldown -= Time.deltaTime;
+
+            float progress = 1 - (remainingSpecialAttackCooldown / specialAttackCooldown);
+            if (progress > 0.98f)
+            {
+                progress = 1;
+                // TODO: invoke light, short vibration here
+            }
+            specialAttackIndicator.SetProgress(progress);
         }
     }
 
@@ -236,5 +247,6 @@ public class PlayerController : MonoBehaviour
         CurrentElementType = elementType;
         currentTower.SetTowerColor(CurrentElementType);
         playerGfx.SetColor(elementType);
+        specialAttackIndicator.SetColor(elementType);
     }
 }
