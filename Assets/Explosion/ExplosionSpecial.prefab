@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 229555894678112627}
   - component: {fileID: 2660742290993942308}
   m_Layer: 0
-  m_Name: Explosion
+  m_Name: ExplosionSpecial
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -54,7 +54,7 @@ SphereCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Radius: 3
+  m_Radius: 6
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!114 &229555894678112627
 MonoBehaviour:
@@ -168,9 +168,49 @@ PrefabInstance:
       propertyPath: InitialModule.startSize.minScalar
       value: 0.5
       objectReference: {fileID: 0}
+    - target: {fileID: 6765344712364848544, guid: 19162ed644f0b5a4ea0b81076cb08e45, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 10.2
+      objectReference: {fileID: 0}
+    - target: {fileID: 6765344712364848544, guid: 19162ed644f0b5a4ea0b81076cb08e45, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 10.2
+      objectReference: {fileID: 0}
+    - target: {fileID: 6765344712364848544, guid: 19162ed644f0b5a4ea0b81076cb08e45, type: 3}
+      propertyPath: m_LocalScale.z
+      value: 10.2
+      objectReference: {fileID: 0}
+    - target: {fileID: 7588623646243464888, guid: 19162ed644f0b5a4ea0b81076cb08e45, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 10.2
+      objectReference: {fileID: 0}
+    - target: {fileID: 7588623646243464888, guid: 19162ed644f0b5a4ea0b81076cb08e45, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 10.2
+      objectReference: {fileID: 0}
+    - target: {fileID: 7588623646243464888, guid: 19162ed644f0b5a4ea0b81076cb08e45, type: 3}
+      propertyPath: m_LocalScale.z
+      value: 10.2
+      objectReference: {fileID: 0}
+    - target: {fileID: 7918298121029839802, guid: 19162ed644f0b5a4ea0b81076cb08e45, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 10.2
+      objectReference: {fileID: 0}
+    - target: {fileID: 7918298121029839802, guid: 19162ed644f0b5a4ea0b81076cb08e45, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 10.2
+      objectReference: {fileID: 0}
+    - target: {fileID: 7918298121029839802, guid: 19162ed644f0b5a4ea0b81076cb08e45, type: 3}
+      propertyPath: m_LocalScale.z
+      value: 10.2
+      objectReference: {fileID: 0}
     - target: {fileID: 8136158778859168964, guid: 19162ed644f0b5a4ea0b81076cb08e45, type: 3}
       propertyPath: m_Name
       value: ExplosionGfx
+      objectReference: {fileID: 0}
+    - target: {fileID: 8226795766649480910, guid: 19162ed644f0b5a4ea0b81076cb08e45, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

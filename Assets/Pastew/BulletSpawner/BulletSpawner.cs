@@ -9,7 +9,8 @@ public class BulletSpawner : MonoBehaviour
     [SerializeField] private bool debug = false;
 
     [Header("Basic attack")]
-    [SerializeField] [Range(5000, 10000)] private float basicAttackBulletPower;
+    [SerializeField] [Range(5000, 10000)] private float basicAttackBulletPower = 5000;
+    [SerializeField] [Range(5000, 10000)] private float specialAttackBulletPower = 5000;
 
     [Header("Special attack")]
     [SerializeField] [Range(100, 1000)] private float minLaunchBulletPower = 100;
@@ -67,7 +68,7 @@ public class BulletSpawner : MonoBehaviour
         
         if (currentBullet.BulletData.IsSpecial == true)
         {
-            bulletRigidbody.AddForce(transform.forward * CalculateLaunchBulletPower());
+            bulletRigidbody.AddForce(transform.forward * specialAttackBulletPower);
         }
         else // Basic Attack
         {

@@ -110,7 +110,10 @@ public class Bubble : MonoBehaviour
 
     public void TakeDamage(BulletData bulletData)
     {
-        health -= bulletData.Damage;
+        int damageTaken = damage;
+        if (bulletData.ElementType == vulnerability) { damageTaken*=3;}
+        
+        health -= damageTaken;
         currentHealth = health;
         hpBar.UpdateHealthBar(currentHealth/startingHealth);
         if (health <= 0)
@@ -164,8 +167,6 @@ public class Bubble : MonoBehaviour
             damage = explosion.BulletData.Damage;
             Debug.Log($"Bubble took a hit from explosion! ({damage} dmg)");
             
-            int damageTaken = damage;
-            if (explosion.BulletData.ElementType == vulnerability) { damageTaken*=3;}
             TakeDamage(explosion.BulletData);
         }
 
@@ -175,8 +176,6 @@ public class Bubble : MonoBehaviour
             damage = bullet.BulletData.Damage;
             Debug.Log($"Bubble took a hit from bullet! ({damage} dmg)");
             
-            int damageTaken = damage;
-            if (bullet.BulletData.ElementType == vulnerability) { damageTaken*=3;}
             TakeDamage(bullet.BulletData);
         }
     }
