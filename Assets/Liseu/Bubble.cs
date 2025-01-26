@@ -164,10 +164,13 @@ public class Bubble : MonoBehaviour
         if (other.GetComponent<Explosion>() != null)
         {
             Explosion explosion = other.GetComponent<Explosion>();
-            damage = explosion.BulletData.Damage;
-            Debug.Log($"Bubble took a hit from explosion! ({damage} dmg)");
-            
-            TakeDamage(explosion.BulletData);
+            if (explosion.BulletData.IsSpecial) // dont get dmg from basic bullet explosion
+            {
+                damage = explosion.BulletData.Damage;
+                Debug.Log($"Bubble took a hit from explosion! ({damage} dmg)");
+
+                TakeDamage(explosion.BulletData);
+            }
         }
 
         if (other.GetComponent<Bullet>() != null && !other.GetComponent<Bullet>().BulletData.IsSpecial)
