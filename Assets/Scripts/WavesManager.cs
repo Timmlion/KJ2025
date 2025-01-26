@@ -43,8 +43,6 @@ public class WavesManager : MonoBehaviour
                 if (currentWave >= wavesList.Count) {currentWave = 0;}
 
                 StartCoroutine(SpawnWave(wavesList));
-
-
                 cooldownTimer = waveCooldown; // Reset the cooldown timer
             }
 
