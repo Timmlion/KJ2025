@@ -39,13 +39,42 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private Color colorNone = Color.white;
     
     private PlayersManager playersManager;
+    private InputSystem_Actions controls;
+
+    private bool attacking = false;
+
+    private void OnEnable()
+    {
+        controls.Enable();
+    }
+    
+    private void OnDisable()
+    {
+        controls.Disable();
+    }
+
+    private void Awake()
+    {
+        controls = new InputSystem_Actions();
+        controls.Player.BasicAttack.performed += StartBasicAttack;
+        controls.Player.BasicAttack.canceled += StopBasicAttack;
+    }
+    
+    private void StartBasicAttack(InputAction.CallbackContext context)
+    {
+        attacking = true;
+    }
+
+    private void StopBasicAttack(InputAction.CallbackContext context)
+    {
+        attacking = false;
+    }
 
     public void InitializePlayer(PlayerInput input)
     {
         PlayerInput = input;
         orbLight.color = ElementColor(CurrentElementType);
         playersManager = GameManager.Instance.PlayersManager;
-
     }
 
     public void OnLook(InputValue value)
@@ -162,19 +191,6 @@ public class PlayerController : MonoBehaviour
         }
     }
     
-    private void OnBasicAttack(InputValue value)
-    {
-        if (value.Get<float>() > 0.6f 
-            && CurrentPlayerState == PlayerState.Idle 
-            && remainingBasicAttackCooldown <= 0)
-        {
-            currentTower.CreateBullet(CurrentElementType, false, PlayerInput);
-            currentTower.LaunchBullet();
-            remainingBasicAttackCooldown = basicAttackCooldown;
-            CurrentPlayerState = PlayerState.Idle; // No need to change state
-        }
-    }
-    
     private void OnSpecialAttack(InputValue value)
     {
         if (value.Get<float>() > 0.6f 
@@ -196,6 +212,19 @@ public class PlayerController : MonoBehaviour
         elapsedTime = 0f;
         
         transform.position = tower.transform.position;
+    }
+
+    private void HandleBasicAttack()
+    {
+        if (attacking
+            && CurrentPlayerState == PlayerState.Idle 
+            && remainingBasicAttackCooldown <= 0)
+        {
+            currentTower.CreateBullet(CurrentElementType, false, PlayerInput);
+            currentTower.LaunchBullet();
+            remainingBasicAttackCooldown = basicAttackCooldown;
+            CurrentPlayerState = PlayerState.Idle; // No need to change state
+        }
     }
     
     private void Update()
@@ -232,6 +261,9 @@ public class PlayerController : MonoBehaviour
             }
             specialAttackIndicator.SetProgress(progress);
         }
+        
+        HandleBasicAttack();
+        
     }
 
     public void SetCurrentTower(TowerController tower)
